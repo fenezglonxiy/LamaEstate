@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+@use "./text.scss";
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: Lato, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  outline: revert;
+}
+
+.flow-spacer {
+  &-x > *:not(:first-child) {
+    margin-left: var(--flow-spacing-x, 0.5rem);
+  }
+
+  &-y > *:not(:first-child) {
+    margin-top: var(--flow-spacing-x, 0.5rem);
+  }
+}
