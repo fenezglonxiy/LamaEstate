@@ -1,0 +1,27 @@
+.app-header-nav {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-list {
+    display: flex;
+    align-items: center;
+
+    &-left {
+      flex: 3;
+      gap: 50px;
+    }
+
+    &-right {
+      flex: 2;
+      justify-content: flex-end;
+      background-color: #fcf5f3;
+      height: 100%;
+
+      & > li {
+        margin-inline: 1.25rem;
+      }
+    }
+  }
+}

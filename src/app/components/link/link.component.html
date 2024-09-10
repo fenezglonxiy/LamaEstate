@@ -1,0 +1,12 @@
+<a
+  appLink
+  [variant]="variant()"
+  [color]="color()"
+  [size]="size()"
+  class="app-link"
+  [ngClass]="{ scale: 'app-link-hover-scale', none: '' }[hoverAnimation()]"
+  [routerLink]="[href()]"
+  [routerLinkActive]="activeClassName() ?? ''"
+>
+  <ng-content />
+</a>

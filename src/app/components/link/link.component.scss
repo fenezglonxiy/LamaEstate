@@ -1,0 +1,9 @@
+.app-link {
+  transition: all 0.4s ease;
+
+  &-hover-scale {
+    &:hover {
+      scale: 1.05;
+    }
+  }
+}

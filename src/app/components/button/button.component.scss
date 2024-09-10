@@ -1,0 +1,25 @@
+.app-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &-base {
+    height: 48px;
+    padding: 0.75rem 1.5rem;
+  }
+
+  &-contained {
+    background-color: var(--button-contained-color, #fece51);
+
+    &-primary {
+      --button-contained-color: #fece51;
+    }
+  }
+
+  &-text {
+    &:hover {
+      background-color: var(--button-text-color, transparent);
+    }
+  }
+}

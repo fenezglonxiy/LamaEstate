@@ -1,0 +1,11 @@
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+
+  &-sm {
+    & > img {
+      width: 28px;
+    }
+  }
+}

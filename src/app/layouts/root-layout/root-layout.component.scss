@@ -1,0 +1,19 @@
+@use "../../mixins/responsive.scss" as *;
+
+.root-layout {
+  max-width: 1366px;
+  margin-inline: auto;
+  padding-inline: 20px;
+
+  @include lg {
+    max-width: 1280px;
+  }
+
+  @include md {
+    max-width: 768px;
+  }
+
+  @include sm {
+    max-width: 640px;
+  }
+}
