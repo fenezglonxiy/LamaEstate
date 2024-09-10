@@ -1,3 +1,9 @@
-<button appButton [variant]="variant()" [color]="color()" [size]="size()">
+<button
+  appButton
+  [variant]="variant()"
+  [color]="color()"
+  [size]="size()"
+  (click)="clicked.emit()"
+>
   <ng-content />
 </button>

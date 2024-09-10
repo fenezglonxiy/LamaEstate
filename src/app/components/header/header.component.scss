@@ -1,3 +1,5 @@
+@use "../../mixins/responsive.scss" as *;
+
 .app-header-nav {
   height: 100px;
   display: flex;
@@ -22,6 +24,24 @@
       & > li {
         margin-inline: 1.25rem;
       }
+
+      @include md {
+        background-color: transparent;
+      }
     }
+
+    @include sm {
+      &-item {
+        display: none;
+      }
+    }
+  }
+}
+
+.app-header-hamburger-menu {
+  display: none;
+
+  @include sm {
+    display: block;
   }
 }

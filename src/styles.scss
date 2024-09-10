@@ -43,6 +43,12 @@ button {
   all: unset;
   box-sizing: border-box;
   outline: revert;
+  cursor: pointer;
+}
+
+.no-scroll {
+  height: 100vh;
+  overflow: hidden;
 }
 
 .flow-spacer {
@@ -51,6 +57,6 @@ button {
   }
 
   &-y > *:not(:first-child) {
-    margin-top: var(--flow-spacing-x, 0.5rem);
+    margin-top: var(--flow-spacing-y, 0.5rem);
   }
 }

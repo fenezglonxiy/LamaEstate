@@ -1,10 +1,10 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { ButtonDirective } from './button.directive';
 
 export type ButtonProps = {
   variant?: 'contained' | 'text';
   color?: 'primary';
-  size?: 'base' | 'auto';
+  size?: 'base' | 'icon' | 'auto';
 };
 
 @Component({
@@ -18,4 +18,5 @@ export class ButtonComponent {
   variant = input<ButtonProps['variant']>();
   color = input<ButtonProps['color']>();
   size = input<ButtonProps['size']>();
+  clicked = output();
 }

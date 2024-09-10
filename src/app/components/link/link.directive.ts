@@ -12,12 +12,4 @@ export class LinkDirective extends ButtonDirective implements OnInit {
   ) {
     super(el, renderer);
   }
-
-  override ngOnInit(): void {
-    if (this.variant === undefined) {
-      return;
-    }
-
-    super.ngOnInit();
-  }
 }

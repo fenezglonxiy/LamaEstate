@@ -2,12 +2,10 @@
   <nav class="app-header-nav">
     <ul class="app-header-nav-list app-header-nav-list-left">
       <li>
-        <app-link href="/" hoverAnimation="scale"
-          ><app-logo size="sm"
-        /></app-link>
+        <app-link href="/"><app-logo size="sm" /></app-link>
       </li>
       @for (item of navListLeft; track $index) {
-      <li>
+      <li class="app-header-nav-list-item">
         <app-link
           [href]="item.href"
           hoverAnimation="scale"
@@ -19,7 +17,7 @@
       }
     </ul>
     <ul class="app-header-nav-list app-header-nav-list-right flow-spacer-x">
-      <li>
+      <li class="app-header-nav-list-item">
         <app-link
           href="signin"
           hoverAnimation="scale"
@@ -28,7 +26,7 @@
           >Sign in</app-link
         >
       </li>
-      <li>
+      <li class="app-header-nav-list-item">
         <app-link
           href="signup"
           hoverAnimation="scale"
@@ -38,6 +36,7 @@
           >Sign up</app-link
         >
       </li>
+      <app-hamburger-menu class="app-header-hamburger-menu" />
     </ul>
   </nav>
 </header>

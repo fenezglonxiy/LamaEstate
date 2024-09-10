@@ -1,3 +1,5 @@
+@use "../../mixins/responsive.scss" as *;
+
 .app-logo {
   display: flex;
   align-items: center;
@@ -6,6 +8,16 @@
   &-sm {
     & > img {
       width: 28px;
+    }
+  }
+
+  span {
+    @include md {
+      display: none;
+    }
+
+    @include sm {
+      display: initial;
     }
   }
 }

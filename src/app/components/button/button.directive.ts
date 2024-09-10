@@ -20,13 +20,12 @@ export class ButtonDirective implements OnInit {
   constructor(public el: ElementRef, public renderer: Renderer2) {}
 
   ngOnInit(): void {
-    if (this.variant() === undefined) {
-      return;
-    }
-
     const base = `app-button-${this.variant()}`;
     this.renderer.addClass(this.el.nativeElement, 'app-button');
-    this.renderer.addClass(this.el.nativeElement, base);
+
+    if (this.variant() !== undefined) {
+      this.renderer.addClass(this.el.nativeElement, base);
+    }
 
     if (this.color() !== undefined) {
       this.renderer.addClass(this.el.nativeElement, `${base}-${this.color()}`);
