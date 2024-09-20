@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input } from '@angular/core';
-import { ButtonComponent } from '../../button/button.component';
+import { NgClass } from '@angular/common';
+import { Component, EventEmitter, Input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-tab',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [NgClass],
   templateUrl: './tab.component.html',
   styleUrl: './tab.component.scss',
 })
@@ -12,7 +12,7 @@ export class TabComponent {
   @Input({ required: true })
   for: string = '';
 
-  private _active = false;
+  $active = signal(false);
   tabClicked = new EventEmitter<string>();
 
   onButtonClick() {
@@ -20,10 +20,10 @@ export class TabComponent {
   }
 
   activate() {
-    this._active = true;
+    this.$active.set(true);
   }
 
   deactivate() {
-    this._active = false;
+    this.$active.set(false);
   }
 }

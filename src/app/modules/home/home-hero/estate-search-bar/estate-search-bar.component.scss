@@ -43,11 +43,6 @@
     border: 1px solid var(--border-color);
     border-left: none;
 
-    .search-icon {
-      width: 24px;
-      height: 24px;
-    }
-
     @include sm {
       border-left: 1px solid var(--border-color);
     }

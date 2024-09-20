@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { TypographyComponent } from '../../../components/typography/typography.component';
 import { EstateSearchBarComponent } from './estate-search-bar/estate-search-bar.component';
 import { CommonModule } from '@angular/common';
-import { TabsComponent } from '../../../components/tabs/tabs.component';
-import { TabComponent } from '../../../components/tabs/tab/tab.component';
-import { TabContentComponent } from '../../../components/tabs/tab-content/tab-content.component';
-import { TabContainerComponent } from '../../../components/tabs/tab-container/tab-container.component';
-import { TabContentContainerComponent } from '../../../components/tabs/tab-content-container/tab-content-container.component';
+import {
+  TabComponent,
+  TabContainerComponent,
+  TabContentComponent,
+  TabContentContainerComponent,
+  TabsComponent,
+} from '../../../components/tabs';
 
 @Component({
   selector: 'app-home-hero',

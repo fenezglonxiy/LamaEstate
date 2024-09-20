@@ -1,3 +1,7 @@
-<app-button (clicked)="onButtonClick()">
+<button
+  class="app-tab"
+  [ngClass]="{ active: $active() }"
+  (click)="onButtonClick()"
+>
   <ng-content />
-</app-button>
+</button>

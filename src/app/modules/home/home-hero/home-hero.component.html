@@ -10,7 +10,20 @@
         impedit voluptatum maiores natus aperiam voluptatem at consectetur ut
         pariatur? Dolorum, ad architecto!</app-typography
       >
-      <app-home-hero-estate-search-bar />
+      <app-tabs>
+        <app-tab-container>
+          <app-tab for="buy-estate-tab">Buy</app-tab>
+          <app-tab for="rent-estate-tab">Rent</app-tab>
+        </app-tab-container>
+        <app-tab-content-container>
+          <app-tab-content id="buy-estate-tab">
+            <app-home-hero-estate-search-bar />
+          </app-tab-content>
+          <app-tab-content id="rent-estate-tab">
+            <app-home-hero-estate-search-bar />
+          </app-tab-content>
+        </app-tab-content-container>
+      </app-tabs>
       <div class="app-home-hero-achievements">
         @for (item of achievements; track $index) {
         <div class="achievement">
@@ -23,16 +36,6 @@
         </div>
         }
       </div>
-      <app-tabs>
-        <app-tab-container>
-          <app-tab for="tab-test-1">tab-1</app-tab>
-          <app-tab for="tab-test-2">tab-2</app-tab>
-        </app-tab-container>
-        <app-tab-content-container>
-          <app-tab-content id="tab-test-1">tab content-1</app-tab-content>
-          <app-tab-content id="tab-test-2">tab content-2</app-tab-content>
-        </app-tab-content-container>
-      </app-tabs>
     </div>
   </div>
   <div class="app-home-hero-image">
