@@ -1,0 +1,37 @@
+@use "../../mixins/responsive.scss" as *;
+
+.app-header-nav {
+  height: 100px;
+
+  &-list {
+    display: flex;
+    align-items: center;
+
+    &-left {
+      gap: 50px;
+    }
+
+    &-right {
+      justify-content: flex-end;
+      height: 100%;
+
+      & > li {
+        margin-inline: 1.25rem;
+      }
+    }
+
+    @include sm {
+      &-item {
+        display: none;
+      }
+    }
+  }
+}
+
+.app-header-hamburger-menu {
+  display: none;
+
+  @include sm {
+    display: block;
+  }
+}

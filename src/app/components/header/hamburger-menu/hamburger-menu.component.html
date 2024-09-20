@@ -1,0 +1,22 @@
+<app-button
+  class="app-header-hamburger-menu-button"
+  size="icon"
+  (clicked)="onButtonClick()"
+>
+  <span>
+    <img src="assets/menu.png" alt="Hamburger menu" />
+  </span>
+</app-button>
+<div class="app-header-hamburger-menu-menu" [ariaExpanded]="expanded">
+  <div class="app-header-hamburger-menu-menu-paper">
+    <nav class="app-header-hamburger-menu-menu-nav">
+      <ul class="app-header-hamburger-menu-menu-nav-list flow-spacer-y">
+        @for (item of navList; track $index) {
+        <li>
+          <app-link [href]="item.href">{{ item.label }}</app-link>
+        </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</div>

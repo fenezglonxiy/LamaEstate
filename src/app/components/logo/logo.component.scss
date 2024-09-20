@@ -1,0 +1,28 @@
+@use "../../mixins/responsive.scss" as *;
+
+.app-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+
+  & > span {
+    display: inline-block;
+    margin-top: 3px;
+  }
+
+  &-sm {
+    & > img {
+      width: 28px;
+    }
+  }
+
+  span {
+    @include md {
+      display: none;
+    }
+
+    @include sm {
+      display: inline-block;
+    }
+  }
+}

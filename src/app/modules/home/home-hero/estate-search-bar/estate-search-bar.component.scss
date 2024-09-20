@@ -1,0 +1,50 @@
+@use "../../../../mixins/responsive.scss" as *;
+
+.estate-search-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 62px;
+  --border-color: #999;
+
+  @include sm {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 1rem;
+  }
+
+  & > input {
+    border: 1px solid var(--border-color);
+    padding-inline: 8px;
+    outline-style: none;
+    box-shadow: none;
+
+    &:first-of-type {
+      border-right: none;
+    }
+
+    &:not(:first-of-type) {
+      border-left: none;
+      border-right: none;
+    }
+
+    @include sm {
+      &:first-of-type {
+        border-right: 1px solid var(--border-color);
+      }
+
+      &:not(:first-of-type) {
+        border-left: 1px solid var(--border-color);
+        border-right: 1px solid var(--border-color);
+      }
+    }
+  }
+
+  .search-button {
+    border: 1px solid var(--border-color);
+    border-left: none;
+
+    @include sm {
+      border-left: 1px solid var(--border-color);
+    }
+  }
+}

@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@use "./text.scss";
+@use "./text.scss" as *;
+@use "./app/mixins/responsive.scss" as *;
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 *,
@@ -43,6 +44,41 @@ button {
   all: unset;
   box-sizing: border-box;
   outline: revert;
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.flex-3-2 {
+  display: flex;
+  align-items: center;
+
+  & > *:first-child {
+    flex: 3;
+  }
+
+  & > *:last-child {
+    flex: 2;
+    background-color: #fcf5f3;
+
+    @include md {
+      background-color: transparent;
+    }
+  }
+}
+
+.h-full {
+  display: block;
+  height: 100%;
+}
+
+.no-scroll {
+  height: 100vh;
+  overflow: hidden;
 }
 
 .flow-spacer {
@@ -51,6 +87,12 @@ button {
   }
 
   &-y > *:not(:first-child) {
-    margin-top: var(--flow-spacing-x, 0.5rem);
+    display: block;
+    margin-top: var(--flow-spacing-y, 0.5rem);
   }
+}
+
+.search-icon {
+  width: 24px;
+  height: 24px;
 }

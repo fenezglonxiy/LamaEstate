@@ -1,0 +1,25 @@
+@use "../../mixins/responsive.scss" as *;
+
+.app-typography {
+  &-h1 {
+    font-size: 64px;
+    font-weight: bold;
+
+    @include lg {
+      font-size: 48px;
+    }
+  }
+
+  &-h3 {
+    font-size: 36px;
+    font-weight: bold;
+
+    @include lg {
+      font-size: 32px;
+    }
+  }
+
+  &-h4 {
+    font-size: 20px;
+  }
+}

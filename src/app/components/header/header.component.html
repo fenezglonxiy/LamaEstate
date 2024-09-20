@@ -1,0 +1,42 @@
+<header>
+  <nav class="app-header-nav flex-3-2">
+    <ul class="app-header-nav-list app-header-nav-list-left">
+      <li>
+        <app-link href="/"><app-logo size="sm" /></app-link>
+      </li>
+      @for (item of navListLeft; track $index) {
+      <li class="app-header-nav-list-item">
+        <app-link
+          [href]="item.href"
+          hoverAnimation="scale"
+          variant="text"
+          size="auto"
+          >{{ item.label }}</app-link
+        >
+      </li>
+      }
+    </ul>
+    <ul class="app-header-nav-list app-header-nav-list-right flow-spacer-x">
+      <li class="app-header-nav-list-item">
+        <app-link
+          href="signin"
+          hoverAnimation="scale"
+          variant="text"
+          size="base"
+          >Sign in</app-link
+        >
+      </li>
+      <li class="app-header-nav-list-item">
+        <app-link
+          href="signup"
+          hoverAnimation="scale"
+          variant="contained"
+          color="primary"
+          size="base"
+          >Sign up</app-link
+        >
+      </li>
+      <app-hamburger-menu class="app-header-hamburger-menu" />
+    </ul>
+  </nav>
+</header>

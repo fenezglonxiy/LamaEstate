@@ -1,0 +1,44 @@
+<section class="app-home-hero flex-3-2">
+  <div class="app-home-hero-text">
+    <div class="app-home-hero-text-paper flow-spacer-y">
+      <app-typography variant="h1" displayAs="h1"
+        >Find Real Estate & Get Your Dream Place</app-typography
+      >
+      <app-typography variant="body" displayAs="p"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
+        itaque voluptas molestiae laudantium velit harum voluptate accusamus
+        impedit voluptatum maiores natus aperiam voluptatem at consectetur ut
+        pariatur? Dolorum, ad architecto!</app-typography
+      >
+      <app-tabs>
+        <app-tab-container>
+          <app-tab for="buy-estate-tab">Buy</app-tab>
+          <app-tab for="rent-estate-tab">Rent</app-tab>
+        </app-tab-container>
+        <app-tab-content-container>
+          <app-tab-content id="buy-estate-tab">
+            <app-home-hero-estate-search-bar />
+          </app-tab-content>
+          <app-tab-content id="rent-estate-tab">
+            <app-home-hero-estate-search-bar />
+          </app-tab-content>
+        </app-tab-content-container>
+      </app-tabs>
+      <div class="app-home-hero-achievements">
+        @for (item of achievements; track $index) {
+        <div class="achievement">
+          <app-typography variant="h3" displayAs="h4">{{
+            item.statistics
+          }}</app-typography>
+          <app-typography variant="h4" displayAs="h3">{{
+            item.statisticsOf
+          }}</app-typography>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="app-home-hero-image">
+    <img src="assets/bg.png" alt="home hero image" />
+  </div>
+</section>

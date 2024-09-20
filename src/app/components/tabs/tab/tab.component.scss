@@ -1,0 +1,28 @@
+:host {
+  & .app-tab {
+    border-bottom-width: var(--tab-border-bottom-width, 0);
+  }
+
+  &:first-of-type .app-tab {
+    border-left-width: 1px;
+    border-top-left-radius: 8px;
+  }
+
+  &:last-of-type .app-tab {
+    border-top-right-radius: 8px;
+  }
+
+  &:not(:first-of-type) .app-tab {
+    border-left: none;
+  }
+}
+
+.app-tab {
+  padding: 1rem 2.25rem;
+  border: 1px solid #999;
+
+  &.active {
+    color: white;
+    background-color: black;
+  }
+}

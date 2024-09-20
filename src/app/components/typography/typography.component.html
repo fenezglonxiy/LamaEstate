@@ -1,0 +1,54 @@
+<ng-container
+  [ngTemplateOutlet]="
+    { span: span, div: div, p: p, h1: h1, h2: h2, h3: h3, h4: h4 }[displayAs()]
+  "
+  [ngTemplateOutletContext]="{
+    $implicit: { content: tmplContent, className: className() }
+  }"
+></ng-container>
+
+<ng-template #span let-data>
+  <span [className]="data.className"
+    ><ng-container [ngTemplateOutlet]="data.content"></ng-container
+  ></span>
+</ng-template>
+
+<ng-template #div let-data>
+  <div [className]="data.className">
+    <ng-container [ngTemplateOutlet]="data.content"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #p let-data>
+  <p [className]="data.className">
+    <ng-container [ngTemplateOutlet]="data.content"></ng-container>
+  </p>
+</ng-template>
+
+<ng-template #h1 let-data>
+  <h1 [className]="data.className">
+    <ng-container [ngTemplateOutlet]="data.content"></ng-container>
+  </h1>
+</ng-template>
+
+<ng-template #h2 let-data>
+  <h2 [className]="data.className">
+    <ng-container [ngTemplateOutlet]="data.content"></ng-container>
+  </h2>
+</ng-template>
+
+<ng-template #h3 let-data>
+  <h3 [className]="data.className">
+    <ng-container [ngTemplateOutlet]="data.content"></ng-container>
+  </h3>
+</ng-template>
+
+<ng-template #h4 let-data>
+  <h4 [className]="data.className">
+    <ng-container [ngTemplateOutlet]="data.content"></ng-container>
+  </h4>
+</ng-template>
+
+<ng-template #tmplContent>
+  <ng-content />
+</ng-template>

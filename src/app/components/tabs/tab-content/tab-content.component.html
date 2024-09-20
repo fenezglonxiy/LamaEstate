@@ -1,0 +1,9 @@
+<ng-container
+  *ngTemplateOutlet="$active() ? tmplContent : tmplEmpty"
+></ng-container>
+
+<ng-template #tmplContent>
+  <ng-content />
+</ng-template>
+
+<ng-template #tmplEmpty></ng-template>

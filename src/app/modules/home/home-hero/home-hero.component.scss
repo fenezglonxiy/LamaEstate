@@ -1,0 +1,49 @@
+@use "../../../mixins/responsive.scss" as *;
+
+.app-home-hero {
+  height: 100%;
+
+  @include md {
+    align-items: flex-start;
+  }
+
+  &-text {
+    &-paper {
+      padding-right: 6.25rem;
+      --flow-spacing-y: 3.125rem;
+
+      @include md {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &-achievements {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    @include sm {
+      display: none;
+    }
+  }
+
+  &-image {
+    height: 100%;
+    position: relative;
+
+    @include md {
+      display: none;
+    }
+
+    & > img {
+      position: absolute;
+      max-width: none;
+      width: 115%;
+      right: 0;
+
+      @include lg {
+        width: 105%;
+      }
+    }
+  }
+}
