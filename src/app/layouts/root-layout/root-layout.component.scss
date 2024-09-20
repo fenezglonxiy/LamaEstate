@@ -1,8 +1,11 @@
 @use "../../mixins/responsive.scss" as *;
 
 .root-layout {
+  height: 100vh;
   max-width: 1366px;
   margin-inline: auto;
+  display: flex;
+  flex-direction: column;
   padding-inline: 20px;
 
   @include lg {
@@ -15,5 +18,9 @@
 
   @include sm {
     max-width: 640px;
+  }
+
+  &-content {
+    flex: 1;
   }
 }

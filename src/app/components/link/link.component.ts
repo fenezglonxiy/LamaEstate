@@ -2,13 +2,11 @@ import { NgClass } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ButtonComponent } from '../button';
-import { LinkDirective } from './link.directive';
-import { ButtonProps } from '../button/button.component';
 
 @Component({
   selector: 'app-link',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgClass, LinkDirective],
+  imports: [RouterLink, RouterLinkActive, NgClass],
   templateUrl: './link.component.html',
   styleUrls: ['./link.component.scss', '../button/button.component.scss'],
 })

@@ -12,6 +12,11 @@
   &-icon {
     width: 36px;
     height: 36px;
+
+    &-md {
+      width: 62px;
+      height: 62px;
+    }
   }
 
   &-contained {
@@ -26,5 +31,9 @@
     &:hover {
       background-color: var(--button-text-color, transparent);
     }
+  }
+
+  &-w-full {
+    width: 100%;
   }
 }

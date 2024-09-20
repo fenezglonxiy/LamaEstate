@@ -1,0 +1,11 @@
+<div class="app-tab-content">
+  <ng-container
+    *ngTemplateOutlet="$active() ? tmplContent : tmplEmpty"
+  ></ng-container>
+</div>
+
+<ng-template #tmplContent>
+  <ng-content />
+</ng-template>
+
+<ng-template #tmplEmpty></ng-template>

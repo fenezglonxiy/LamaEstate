@@ -1,10 +1,9 @@
 <a
-  appLink
-  [variant]="variant()"
-  [color]="color()"
-  [size]="size()"
-  class="app-link"
-  [ngClass]="{ scale: 'app-link-hover-scale', none: '' }[hoverAnimation()]"
+  [ngClass]="[
+    className(),
+    'app-link',
+    { scale: 'app-link-hover-scale', none: '' }[hoverAnimation()]
+  ]"
   [routerLink]="[href()]"
   [routerLinkActive]="activeClassName() ?? ''"
 >
