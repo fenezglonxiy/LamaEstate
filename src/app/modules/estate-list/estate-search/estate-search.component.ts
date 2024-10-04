@@ -2,11 +2,13 @@ import { Component, inject } from '@angular/core';
 import { TypographyComponent } from '../../../components/typography';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../../components/button';
-import { FormFieldComponent } from '../../../components/form-field/form-field.component';
-import { FormItemComponent } from '../../../components/form-field/form-item/form-item.component';
-import { FormLabelComponent } from '../../../components/form-field/form-label/form-label.component';
-import { FormControlComponent } from '../../../components/form-field/form-control/form-control.component';
-import { InputComponent } from '../../../components/input/input.component';
+import {
+  FormControlComponent,
+  FormFieldComponent,
+  FormItemComponent,
+  FormLabelComponent,
+} from '../../../components/form-field';
+import { InputComponent } from '../../../components/input';
 
 @Component({
   selector: 'app-estate-list-estate-search',

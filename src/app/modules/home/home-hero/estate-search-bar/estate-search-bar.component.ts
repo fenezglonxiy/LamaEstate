@@ -1,10 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../../../components/button';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { FormFieldComponent } from '../../../../components/form-field/form-field.component';
-import { FormItemComponent } from '../../../../components/form-field/form-item/form-item.component';
-import { FormLabelComponent } from '../../../../components/form-field/form-label/form-label.component';
-import { FormControlComponent } from '../../../../components/form-field/form-control/form-control.component';
+import {
+  FormControlComponent,
+  FormFieldComponent,
+  FormItemComponent,
+  FormLabelComponent,
+} from '../../../../components/form-field';
 import { InputComponent } from '../../../../components/input';
 
 @Component({
