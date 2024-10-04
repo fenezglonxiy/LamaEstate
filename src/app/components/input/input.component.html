@@ -1,1 +1,9 @@
-<p>input works!</p>
+<input
+  class="app-input"
+  [ngClass]="{ 'w-full': wFull, 'h-full': hFull }"
+  [id]="id"
+  [type]="type"
+  [attr.aria-describedby]="describedby"
+  [placeholder]="placeholder"
+  [formControl]="control"
+/>

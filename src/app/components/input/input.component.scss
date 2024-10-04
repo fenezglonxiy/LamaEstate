@@ -1,0 +1,30 @@
+:host {
+  --border-color: #999;
+  --py: 0.5rem;
+  --px: 0.75rem;
+  --border-top-color: #999;
+  --border-right-color: #999;
+  --border-bottom-color: #999;
+  --border-left-color: #999;
+  --border-top: 1px solid var(--border-color, --border-top-color);
+  --border-right: 1px solid var(--border-color, --border-top-color);
+  --border-bottom: 1px solid var(--border-color, --border-top-color);
+  --border-left: 1px solid var(--border-color, --border-top-color);
+}
+
+.app-input {
+  padding: var(--py) var(--px);
+  border: 1px solid var(--border-color);
+  border-top: var(--border-top);
+  border-right: var(--border-right);
+  border-bottom: var(--border-bottom);
+  border-left: var(--border-left);
+
+  &.w-full {
+    width: 100%;
+  }
+
+  &.h-full {
+    height: 100%;
+  }
+}

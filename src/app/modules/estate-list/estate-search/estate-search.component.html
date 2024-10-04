@@ -1,16 +1,49 @@
 <app-typography variant="h4" displayAs="p">Search results for</app-typography>
 
-<form>
-  <app-text-field />
+<form [formGroup]="estateSearchForm">
+  <app-form-field [control]="locationFormControl">
+    <app-form-item>
+      <app-form-label>Location</app-form-label>
+      <app-form-control>
+        <app-input placeholder="City Location" />
+      </app-form-control>
+    </app-form-item>
+  </app-form-field>
 
-  <div>
-    <app-text-field />
-    <app-text-field />
-    <app-text-field />
-    <app-text-field />
-    <app-text-field />
-    <app-button variant="contained" color="primary" size="base">
-      <img class="search-icon" src="assets/search.png" alt="search icon" />
-    </app-button>
-  </div>
+  <app-form-field [control]="bedroomFormControl">
+    <app-form-item>
+      <app-form-label>Bedroom</app-form-label>
+      <app-form-control>
+        <app-input placeholder="Any" type="number" />
+      </app-form-control>
+    </app-form-item>
+  </app-form-field>
+
+  <app-form-field [control]="minPriceFormControl">
+    <app-form-item>
+      <app-form-label>Min Price</app-form-label>
+      <app-form-control>
+        <app-input placeholder="Any" type="number" />
+      </app-form-control>
+    </app-form-item>
+  </app-form-field>
+
+  <app-form-field [control]="maxPriceFormControl">
+    <app-form-item>
+      <app-form-label>Max Price</app-form-label>
+      <app-form-control>
+        <app-input placeholder="Any" type="number" />
+      </app-form-control>
+    </app-form-item>
+  </app-form-field>
+
+  <app-button
+    type="submit"
+    variant="contained"
+    color="primary"
+    size="base"
+    (click)="handleSubmit()"
+  >
+    <img class="search-icon" src="assets/search.png" alt="search icon" />
+  </app-button>
 </form>

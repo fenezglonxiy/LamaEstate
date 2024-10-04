@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,8 +8,19 @@ import { CommonModule } from '@angular/common';
   templateUrl: './typography.component.html',
   styleUrl: './typography.component.scss',
 })
-export class TypographyComponent {
-  displayAs = input<'span' | 'div' | 'p' | 'h1' | 'h2' | 'h3' | 'h4'>('p');
-  variant = input<'body' | 'h1' | 'h2' | 'h3' | 'h4'>('body');
-  className = computed(() => `app-typography-${this.variant()}`);
+export class TypographyComponent implements OnInit {
+  @Input()
+  displayAs: 'span' | 'div' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'label' | 'p' =
+    'p';
+
+  @HostBinding('for') @Input() for = '';
+
+  @Input()
+  variant: 'body' | 'h1' | 'h2' | 'h3' | 'h4' = 'body';
+
+  className = '';
+
+  ngOnInit(): void {
+    this.className = `app-typography-${this.variant}`;
+  }
 }
