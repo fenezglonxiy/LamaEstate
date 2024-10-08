@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { FormFieldService } from './form-field.service';
+import { FormFieldService } from '../form-field.service';
 import { AbstractControl } from '@angular/forms';
 
 @Component({
