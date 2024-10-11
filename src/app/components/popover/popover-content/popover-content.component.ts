@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   inject,
+  OnDestroy,
   OnInit,
   TemplateRef,
   ViewChild,
@@ -17,7 +18,7 @@ import { PaperComponent } from '../../paper/paper.component';
   templateUrl: './popover-content.component.html',
   styleUrl: './popover-content.component.scss',
 })
-export class PopoverContentComponent implements AfterViewInit {
+export class PopoverContentComponent implements OnDestroy, AfterViewInit {
   private _popoverService = inject(PopoverService);
 
   @ViewChild('tmplContent', { static: true })
@@ -37,6 +38,12 @@ export class PopoverContentComponent implements AfterViewInit {
     this._popoverService.registerContent(this._tmplContent);
     this.calculateAnchor();
     this.calculateTransform();
+
+    window.addEventListener('resize', this.calculateAnchor.bind(this));
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.calculateAnchor.bind(this));
   }
 
   calculateAnchor(): void {

@@ -56,8 +56,10 @@ export class PopoverService {
 
       if (this._$contentPopped()) {
         portableService.attachTemplate(this._content);
+        document.body.classList.add('no-scroll');
       } else {
         portableService.detachTemplate();
+        document.body.classList.remove('no-scroll');
       }
     });
   }
