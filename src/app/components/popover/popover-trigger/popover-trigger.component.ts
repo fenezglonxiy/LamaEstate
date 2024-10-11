@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, ViewContainerRef } from '@angular/core';
 import { PopoverService } from '../popover.service';
 
 @Component({
@@ -9,9 +9,12 @@ import { PopoverService } from '../popover.service';
   styleUrl: './popover-trigger.component.scss',
 })
 export class PopoverTriggerComponent {
-  popoverService = inject(PopoverService);
+  constructor(private _popoverService: PopoverService, vcr: ViewContainerRef) {
+    this._popoverService.registerTrigger(vcr.element);
+  }
 
+  @HostListener('click')
   handleClick() {
-    this.popoverService.toggleContent();
+    this._popoverService.toggleContent();
   }
 }

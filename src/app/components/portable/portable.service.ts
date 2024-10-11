@@ -5,6 +5,7 @@ import {
   Injector,
   TemplateRef,
   ViewContainerRef,
+  ViewRef,
 } from '@angular/core';
 import { AppComponent } from '../../app.component';
 
@@ -32,5 +33,13 @@ export class PortableService {
     }
 
     return this._rootVcr.createEmbeddedView(templateRef, context, options);
+  }
+
+  detachTemplate(index?: number): ViewRef | null {
+    if (this._portalVcr !== null) {
+      return this._portalVcr.detach(index);
+    }
+
+    return this._rootVcr.detach(index);
   }
 }
