@@ -1,27 +1,20 @@
-import {
-  effect,
-  ElementRef,
-  Injectable,
-  signal,
-  TemplateRef,
-} from '@angular/core';
+import { ElementRef, inject, Injectable } from '@angular/core';
 import { PortableService } from '../portable/portable.service';
-import { MatrixOrigin } from './popover.component';
+import { TwoDimensionalOrigin } from './popover.component';
+import { EmbeddedViewParams } from '../../../types';
 
 @Injectable()
 export class PopoverService {
-  private _$contentPopped = signal(false);
+  private _portableService = inject(PortableService);
 
   private _trigger: ElementRef<any> | null = null;
 
-  private _content: TemplateRef<any> | null = null;
-
-  public anchorOrigin: MatrixOrigin = {
+  public anchorOrigin: TwoDimensionalOrigin = {
     vertical: 'top',
     horizontal: 'left',
   };
 
-  public transformOrigin: MatrixOrigin = {
+  public transformOrigin: TwoDimensionalOrigin = {
     vertical: 'top',
     horizontal: 'left',
   };
@@ -48,31 +41,15 @@ export class PopoverService {
     };
   }
 
-  constructor(portableService: PortableService) {
-    effect(() => {
-      if (this._content === null) {
-        return;
-      }
-
-      if (this._$contentPopped()) {
-        portableService.attachTemplate(this._content);
-        document.body.classList.add('no-scroll');
-      } else {
-        portableService.detachTemplate();
-        document.body.classList.remove('no-scroll');
-      }
-    });
-  }
-
   toggleContent() {
-    this._$contentPopped.update((prev) => !prev);
+    this._portableService.toggleContent();
   }
 
   registerTrigger(trigger: ElementRef<any>) {
     this._trigger = trigger;
   }
 
-  registerContent(content: TemplateRef<any>) {
-    this._content = content;
+  registerContent<C>(params: EmbeddedViewParams<C>) {
+    this._portableService.registerContent(params, true);
   }
 }

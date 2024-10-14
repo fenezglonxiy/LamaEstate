@@ -1,12 +1,3 @@
-<ng-template #tmplContent>
-  <div
-    [style.position]="'absolute'"
-    [style.top]="anchor.top + 'px'"
-    [style.left]="anchor.left + 'px'"
-    [style.transform]="'translate(' + transform.x + '%,' + transform.y + '%)'"
-  >
-    <app-paper>
-      <ng-content />
-    </app-paper>
-  </div>
-</ng-template>
+<app-paper>
+  <ng-content />
+</app-paper>

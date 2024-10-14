@@ -1,11 +1,9 @@
 import {
-  AfterViewInit,
   Component,
+  HostBinding,
   inject,
   OnDestroy,
   OnInit,
-  TemplateRef,
-  ViewChild,
 } from '@angular/core';
 import { PopoverService } from '../popover.service';
 import { CommonModule } from '@angular/common';
@@ -18,27 +16,21 @@ import { PaperComponent } from '../../paper/paper.component';
   templateUrl: './popover-content.component.html',
   styleUrl: './popover-content.component.scss',
 })
-export class PopoverContentComponent implements OnDestroy, AfterViewInit {
+export class PopoverContentComponent implements OnInit, OnDestroy {
   private _popoverService = inject(PopoverService);
 
-  @ViewChild('tmplContent', { static: true })
-  private _tmplContent!: TemplateRef<any>;
+  @HostBinding('style.top')
+  anchorTop = '';
 
-  anchor = {
-    top: 0,
-    left: 0,
-  };
+  @HostBinding('style.left')
+  anchorLeft = '';
 
-  transform = {
-    x: 0,
-    y: 0,
-  };
+  @HostBinding('style.transform')
+  transform = '';
 
-  ngAfterViewInit(): void {
-    this._popoverService.registerContent(this._tmplContent);
+  ngOnInit(): void {
     this.calculateAnchor();
     this.calculateTransform();
-
     window.addEventListener('resize', this.calculateAnchor.bind(this));
   }
 
@@ -53,54 +45,59 @@ export class PopoverContentComponent implements OnDestroy, AfterViewInit {
 
     switch (anchorOrigin.vertical) {
       case 'top':
-        this.anchor.top = triggerPos?.offsetTop;
+        this.anchorTop = triggerPos?.offsetTop + 'px';
         break;
       case 'center':
-        this.anchor.top = triggerPos?.offsetTop + triggerSize?.height / 2;
+        this.anchorTop = triggerPos?.offsetTop + triggerSize?.height / 2 + 'px';
         break;
       case 'bottom':
-        this.anchor.top = triggerPos?.offsetTop + triggerSize?.height;
+        this.anchorTop = triggerPos?.offsetTop + triggerSize?.height + 'px';
         break;
     }
 
     switch (anchorOrigin.horizontal) {
       case 'left':
-        this.anchor.left = triggerPos?.offsetLeft;
+        this.anchorLeft = triggerPos?.offsetLeft + 'px';
         break;
       case 'center':
-        this.anchor.left = triggerPos?.offsetLeft + triggerSize?.width / 2;
+        this.anchorLeft =
+          triggerPos?.offsetLeft + triggerSize?.width / 2 + 'px';
         break;
       case 'right':
-        this.anchor.left = triggerPos?.offsetLeft + triggerSize?.width;
+        this.anchorLeft = triggerPos?.offsetLeft + triggerSize?.width + 'px';
         break;
     }
   }
 
   calculateTransform(): void {
     const transformOrigin = this._popoverService.transformOrigin;
+    let translateX = 0;
+    let translateY = 0;
 
     switch (transformOrigin.vertical) {
       case 'top':
-        this.transform.y = 0;
+        translateY = 0;
         break;
       case 'center':
-        this.transform.y = -50;
+        translateY = -50;
         break;
       case 'bottom':
-        this.transform.y = -100;
+        translateY = -100;
         break;
     }
 
     switch (transformOrigin.horizontal) {
       case 'left':
-        this.transform.x = 0;
+        translateX = 0;
         break;
       case 'center':
-        this.transform.x = -50;
+        translateX = -50;
         break;
       case 'right':
-        this.transform.x = -100;
+        translateX = -100;
         break;
     }
+
+    this.transform = `translate(${translateX}%,${translateY}%)`;
   }
 }
