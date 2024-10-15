@@ -24,9 +24,11 @@ export class PopoverService {
       return null;
     }
 
+    const rect = this._trigger.nativeElement.getBoundingClientRect();
+
     return {
-      offsetTop: this._trigger.nativeElement.offsetTop,
-      offsetLeft: this._trigger.nativeElement.offsetLeft,
+      x: rect.x,
+      y: rect.y,
     };
   }
 
@@ -35,9 +37,11 @@ export class PopoverService {
       return null;
     }
 
+    const rect = this._trigger.nativeElement.getBoundingClientRect();
+
     return {
-      width: this._trigger.nativeElement.offsetWidth,
-      height: this._trigger.nativeElement.offsetHeight,
+      width: rect.width,
+      height: rect.height,
     };
   }
 
@@ -49,7 +53,14 @@ export class PopoverService {
     this._trigger = trigger;
   }
 
-  registerContent<C>(params: EmbeddedViewParams<C>) {
-    this._portableService.registerContent(params, true);
+  registerContent<C>({ templateRef, context, options }: EmbeddedViewParams<C>) {
+    this._portableService.registerContent(
+      {
+        templateRef,
+        context,
+        options,
+      },
+      true
+    );
   }
 }

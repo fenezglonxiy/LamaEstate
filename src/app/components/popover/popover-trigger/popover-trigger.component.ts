@@ -1,5 +1,5 @@
-import { Component, HostListener, ViewContainerRef } from '@angular/core';
-import { PopoverService } from '../popover.service';
+import { Component } from '@angular/core';
+import { PopoverTriggerDirective } from './popover-trigger.directive';
 
 @Component({
   selector: 'app-popover-trigger',
@@ -7,14 +7,6 @@ import { PopoverService } from '../popover.service';
   imports: [],
   templateUrl: './popover-trigger.component.html',
   styleUrl: './popover-trigger.component.scss',
+  hostDirectives: [PopoverTriggerDirective],
 })
-export class PopoverTriggerComponent {
-  constructor(private _popoverService: PopoverService, vcr: ViewContainerRef) {
-    this._popoverService.registerTrigger(vcr.element);
-  }
-
-  @HostListener('click')
-  handleClick() {
-    this._popoverService.toggleContent();
-  }
-}
+export class PopoverTriggerComponent {}

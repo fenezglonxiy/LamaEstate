@@ -1,12 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  inject,
-  Input,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { PopoverService } from './popover.service';
 
 export type TwoDimensionalOrigin = {
@@ -22,11 +14,8 @@ export type TwoDimensionalOrigin = {
   styleUrl: './popover.component.scss',
   providers: [PopoverService],
 })
-export class PopoverComponent implements OnInit, AfterViewInit {
+export class PopoverComponent implements OnInit {
   private _popoverService = inject(PopoverService);
-
-  @ViewChild('tmplContent', { read: TemplateRef, static: true })
-  private _content!: TemplateRef<any>;
 
   @Input()
   anchorOrigin: TwoDimensionalOrigin = {
@@ -43,9 +32,5 @@ export class PopoverComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this._popoverService.anchorOrigin = this.anchorOrigin;
     this._popoverService.transformOrigin = this.transformOrigin;
-  }
-
-  ngAfterViewInit(): void {
-    this._popoverService.registerContent({ templateRef: this._content });
   }
 }
