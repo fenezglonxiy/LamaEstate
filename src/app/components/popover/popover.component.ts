@@ -1,5 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { PopoverService } from './popover.service';
+import { PortableService } from '../portable';
 
 export type TwoDimensionalOrigin = {
   vertical: 'top' | 'center' | 'bottom';
@@ -12,7 +13,7 @@ export type TwoDimensionalOrigin = {
   imports: [],
   templateUrl: './popover.component.html',
   styleUrl: './popover.component.scss',
-  providers: [PopoverService],
+  providers: [PortableService, PopoverService],
 })
 export class PopoverComponent implements OnInit {
   private _popoverService = inject(PopoverService);

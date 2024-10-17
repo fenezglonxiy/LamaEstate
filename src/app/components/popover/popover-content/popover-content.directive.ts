@@ -13,6 +13,8 @@ import { PopoverService } from '../popover.service';
 export class PopoverContentDirective implements OnInit, OnDestroy {
   private _popoverService = inject(PopoverService);
 
+  private _triggerObserver: ResizeObserver | null = null;
+
   @HostBinding('style.position')
   readonly position = 'absolute';
 
@@ -22,23 +24,46 @@ export class PopoverContentDirective implements OnInit, OnDestroy {
   @HostBinding('style.left')
   anchorLeft = '';
 
+  @HostBinding('style.width')
+  width = '';
+
   @HostBinding('style.transform')
   transform = '';
 
   ngOnInit(): void {
-    this.calculateAnchor();
     this.calculateTransform();
+
+    if (this._popoverService.trigger) {
+      this._triggerObserver = new ResizeObserver(() => {
+        this.calculateWidth();
+        this.calculateAnchor();
+      });
+      this._triggerObserver.observe(this._popoverService.trigger.nativeElement);
+    }
+
+    window.addEventListener('resize', this.calculateWidth.bind(this));
     window.addEventListener('resize', this.calculateAnchor.bind(this));
   }
 
   ngOnDestroy(): void {
+    if (this._popoverService.trigger && this._triggerObserver) {
+      this._triggerObserver.unobserve(
+        this._popoverService.trigger.nativeElement
+      );
+    }
+
+    window.removeEventListener('resize', this.calculateWidth.bind(this));
     window.removeEventListener('resize', this.calculateAnchor.bind(this));
   }
 
-  calculateAnchor(): void {
-    const anchorOrigin = this._popoverService.anchorOrigin;
+  calculateWidth() {
+    this.width = this._popoverService.triggerSize?.width + 'px';
+  }
+
+  calculateAnchor() {
     const triggerPos = this._popoverService.triggerPosition;
     const triggerSize = this._popoverService.triggerSize;
+    const anchorOrigin = this._popoverService.anchorOrigin;
 
     switch (anchorOrigin.vertical) {
       case 'top':
@@ -65,7 +90,7 @@ export class PopoverContentDirective implements OnInit, OnDestroy {
     }
   }
 
-  calculateTransform(): void {
+  calculateTransform() {
     const transformOrigin = this._popoverService.transformOrigin;
     let translateX = 0;
     let translateY = 0;
