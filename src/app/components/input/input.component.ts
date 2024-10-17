@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { FormFieldService } from '../form-field/form-field.service';
-import { FormItemService } from '../form-field/form-item/form-item.service';
 import { NgClass } from '@angular/common';
+import { FormFieldService, FormItemService } from '../form';
 
 @Component({
   selector: 'app-input',
@@ -32,12 +31,13 @@ export class InputComponent implements OnInit {
 
   constructor(
     private _formFieldService: FormFieldService,
-    private _formItemService: FormItemService
-  ) {}
+    formItemService: FormItemService
+  ) {
+    this.id = formItemService.formItemId;
+    this.describedby = formItemService.formDescriptionId;
+  }
 
   ngOnInit(): void {
     this.control = this._formFieldService.control as NonNullable<FormControl>;
-    this.id = this._formItemService.formItemId;
-    this.describedby = this._formItemService.formDescriptionId;
   }
 }

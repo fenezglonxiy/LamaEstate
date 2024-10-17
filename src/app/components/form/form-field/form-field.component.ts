@@ -1,6 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { FormFieldService } from '../form-field.service';
 import { AbstractControl } from '@angular/forms';
+import { FormFieldService } from './form-field.service';
 
 @Component({
   selector: 'app-form-field',
