@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.app-select-option {
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: black;
+    background-color: #accef7;
+  }
+
+  &[aria-selected="true"] {
+    color: black;
+    background-color: #3297fd;
+  }
+}
