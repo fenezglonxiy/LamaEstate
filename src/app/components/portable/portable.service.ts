@@ -5,11 +5,8 @@ import {
   effect,
   EmbeddedViewRef,
   Injectable,
-  Injector,
   signal,
-  TemplateRef,
   ViewContainerRef,
-  ViewRef,
 } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { OverlayComponent } from '../overlay/overlay.component';

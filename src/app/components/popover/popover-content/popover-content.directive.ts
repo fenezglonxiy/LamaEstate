@@ -33,27 +33,23 @@ export class PopoverContentDirective implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.calculateTransform();
 
-    if (this._popoverService.trigger) {
+    if (this._popoverService.triggerElement) {
       this._triggerObserver = new ResizeObserver(() => {
         this.calculateWidth();
         this.calculateAnchor();
       });
-      this._triggerObserver.observe(this._popoverService.trigger.nativeElement);
+      this._triggerObserver.observe(this._popoverService.triggerElement);
+      window.addEventListener('resize', this.calculateWidth.bind(this));
+      window.addEventListener('resize', this.calculateAnchor.bind(this));
     }
-
-    window.addEventListener('resize', this.calculateWidth.bind(this));
-    window.addEventListener('resize', this.calculateAnchor.bind(this));
   }
 
   ngOnDestroy(): void {
-    if (this._popoverService.trigger && this._triggerObserver) {
-      this._triggerObserver.unobserve(
-        this._popoverService.trigger.nativeElement
-      );
+    if (this._triggerObserver && this._popoverService.triggerElement) {
+      this._triggerObserver.unobserve(this._popoverService.triggerElement);
+      window.removeEventListener('resize', this.calculateWidth.bind(this));
+      window.removeEventListener('resize', this.calculateAnchor.bind(this));
     }
-
-    window.removeEventListener('resize', this.calculateWidth.bind(this));
-    window.removeEventListener('resize', this.calculateAnchor.bind(this));
   }
 
   calculateWidth() {
