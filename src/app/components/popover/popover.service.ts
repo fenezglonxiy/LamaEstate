@@ -7,7 +7,16 @@ import { EmbeddedViewParams } from '../../../types';
 export class PopoverService {
   private _portableService = inject(PortableService);
 
-  trigger: ElementRef<any> | null = null;
+  private _trigger: ElementRef<any> | null = null;
+
+  public get triggerElement() {
+    if (this._trigger === null) {
+      return null;
+    }
+
+    const element = this._trigger.nativeElement.cloneNode(true) as Element;
+    return element;
+  }
 
   public anchorOrigin: TwoDimensionalOrigin = {
     vertical: 'top',
@@ -20,11 +29,11 @@ export class PopoverService {
   };
 
   public get triggerPosition() {
-    if (this.trigger === null) {
+    if (this._trigger === null) {
       return null;
     }
 
-    const rect = this.trigger.nativeElement.getBoundingClientRect();
+    const rect = this._trigger.nativeElement.getBoundingClientRect();
 
     return {
       x: rect.x,
@@ -33,11 +42,11 @@ export class PopoverService {
   }
 
   public get triggerSize() {
-    if (this.trigger === null) {
+    if (this._trigger === null) {
       return null;
     }
 
-    const rect = this.trigger.nativeElement.getBoundingClientRect();
+    const rect = this._trigger.nativeElement.getBoundingClientRect();
 
     return {
       width: rect.width,
@@ -50,7 +59,9 @@ export class PopoverService {
   }
 
   registerTrigger(trigger: ElementRef<any>) {
-    this.trigger = trigger;
+    if (this._trigger === null) {
+      this._trigger = trigger;
+    }
   }
 
   registerContent<C>({ templateRef, context, options }: EmbeddedViewParams<C>) {
