@@ -6,11 +6,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { PopoverService } from '../popover.service';
+import { PopoverAnchorComponent } from '../popover-anchor/popover-anchor.component';
 
 @Component({
   selector: 'app-popover-content-registrator',
   standalone: true,
-  imports: [],
+  imports: [PopoverAnchorComponent],
   templateUrl: './popover-content-registrator.component.html',
   styleUrl: './popover-content-registrator.component.scss',
 })

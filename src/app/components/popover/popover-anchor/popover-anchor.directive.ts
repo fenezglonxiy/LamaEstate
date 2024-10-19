@@ -10,7 +10,7 @@ import { PopoverService } from '../popover.service';
 @Directive({
   standalone: true,
 })
-export class PopoverContentDirective implements OnInit, OnDestroy {
+export class PopoverAnchorDirective implements OnInit, OnDestroy {
   private _popoverService = inject(PopoverService);
 
   private _triggerObserver: ResizeObserver | null = null;
@@ -24,22 +24,19 @@ export class PopoverContentDirective implements OnInit, OnDestroy {
   @HostBinding('style.left')
   anchorLeft = '';
 
-  @HostBinding('style.width')
-  width = '';
-
   @HostBinding('style.transform')
   transform = '';
 
   ngOnInit(): void {
+    this.calculateAnchor();
     this.calculateTransform();
 
     if (this._popoverService.triggerElement) {
       this._triggerObserver = new ResizeObserver(() => {
-        this.calculateWidth();
         this.calculateAnchor();
       });
+
       this._triggerObserver.observe(this._popoverService.triggerElement);
-      window.addEventListener('resize', this.calculateWidth.bind(this));
       window.addEventListener('resize', this.calculateAnchor.bind(this));
     }
   }
@@ -47,43 +44,44 @@ export class PopoverContentDirective implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this._triggerObserver && this._popoverService.triggerElement) {
       this._triggerObserver.unobserve(this._popoverService.triggerElement);
-      window.removeEventListener('resize', this.calculateWidth.bind(this));
       window.removeEventListener('resize', this.calculateAnchor.bind(this));
     }
-  }
-
-  calculateWidth() {
-    this.width = this._popoverService.triggerSize?.width + 'px';
   }
 
   calculateAnchor() {
     const triggerPos = this._popoverService.triggerPosition;
     const triggerSize = this._popoverService.triggerSize;
     const anchorOrigin = this._popoverService.anchorOrigin;
+    let top = 0;
 
     switch (anchorOrigin.vertical) {
       case 'top':
-        this.anchorTop = triggerPos?.y + 'px';
+        top = triggerPos?.y;
         break;
       case 'center':
-        this.anchorTop = triggerPos?.y + triggerSize?.height / 2 + 'px';
+        top = triggerPos?.y + triggerSize?.height / 2;
         break;
       case 'bottom':
-        this.anchorTop = triggerPos?.y + triggerSize?.height + 'px';
+        top = triggerPos?.y + triggerSize?.height;
         break;
     }
 
+    let left = 0;
+
     switch (anchorOrigin.horizontal) {
       case 'left':
-        this.anchorLeft = triggerPos?.x + 'px';
+        left = triggerPos?.x;
         break;
       case 'center':
-        this.anchorLeft = triggerPos?.x + triggerSize?.width / 2 + 'px';
+        left = triggerPos?.x + triggerSize?.width / 2;
         break;
       case 'right':
-        this.anchorLeft = triggerPos?.x + triggerSize?.width + 'px';
+        left = triggerPos?.x + triggerSize?.width;
         break;
     }
+
+    this.anchorTop = top.toFixed(2) + 'px';
+    this.anchorLeft = left.toFixed(2) + 'px';
   }
 
   calculateTransform() {
