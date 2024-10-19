@@ -9,12 +9,16 @@ export class PopoverService {
 
   private _trigger: ElementRef<any> | null = null;
 
+  public get isContentShowed() {
+    return this._portableService.isContentShowed;
+  }
+
   public get triggerElement() {
     if (this._trigger === null) {
       return null;
     }
 
-    const element = this._trigger.nativeElement.cloneNode(true) as Element;
+    const element = this._trigger.nativeElement as Element;
     return element;
   }
 

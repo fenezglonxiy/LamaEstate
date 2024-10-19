@@ -26,6 +26,10 @@ export class PortableService {
 
   private _content: EmbeddedViewRef<any> | null = null;
 
+  public get isContentShowed() {
+    return this._$contentShowed();
+  }
+
   constructor(private _appRef: ApplicationRef) {
     this._rootVcr = (this._appRef.components[0].instance as AppComponent).vcr;
   }

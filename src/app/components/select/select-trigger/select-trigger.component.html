@@ -1,7 +1,16 @@
-<button type="button" class="app-select-trigger">
+<button
+  type="button"
+  class="app-select-trigger"
+  [style.fontFamily]="fontFamily"
+  [style.fontSize]="fontSize + 'px'"
+  [style.paddingBlock]="paddingBlock + 'px'"
+  [style.paddingInline]="paddingInline + 'px'"
+  [style.borderWidth]="borderWidth + 'px'"
+  [attr.aria-expanded]="isContentShowed"
+>
   <span>
     <ng-content />
   </span>
 
-  <i class="fa-sharp fa-thin fa-chevron-down"></i>
+  <i class="fa-sharp fa-thin fa-chevron-down chevron-down"></i>
 </button>

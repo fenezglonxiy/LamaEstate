@@ -7,6 +7,7 @@ import {
   inject,
   Input,
   OnInit,
+  ViewContainerRef,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SelectService } from '../select.service';
@@ -19,8 +20,6 @@ import { SelectService } from '../select.service';
   styleUrl: './select-item.component.scss',
 })
 export class SelectItemComponent implements OnInit {
-  private _selectService = inject(SelectService);
-
   @HostBinding('role')
   private _role = 'listitem';
 
@@ -32,15 +31,22 @@ export class SelectItemComponent implements OnInit {
 
   $selected = computed(() => this.value === this._selectService.$value?.());
 
-  constructor() {
+  constructor(
+    private _vcr: ViewContainerRef,
+    private _selectService: SelectService
+  ) {
     effect(() => {
       this._tabindex = this.$selected() ? 0 : -1;
     });
   }
 
-  handleSelect: ((value: any) => void) | undefined;
+  handleSelect: ((value: string) => void) | undefined;
 
   ngOnInit(): void {
+    this._selectService.registerItem(
+      this.value,
+      this._vcr.element.nativeElement.innerText
+    );
     this.handleSelect = this._selectService.onSelect;
   }
 }

@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   Component,
   computed,
   forwardRef,
@@ -26,12 +27,10 @@ import { PopoverService } from '../../popover';
   ],
 })
 export class SelectControlComponent implements ControlValueAccessor {
-  private _popoverService = inject(PopoverService);
-
   @HostBinding('role')
   private _role = 'list';
 
-  private _$value = signal<any>(undefined);
+  private _$value = signal<string>('');
 
   private _onChange: ((_: unknown) => unknown) | undefined = undefined;
 
@@ -49,10 +48,13 @@ export class SelectControlComponent implements ControlValueAccessor {
     this._onTouched = fn;
   }
 
-  constructor(selectService: SelectService) {
-    selectService.$value = computed(() => this._$value());
+  constructor(
+    private _popoverService: PopoverService,
+    private _selectService: SelectService
+  ) {
+    this._selectService.$value = computed(() => this._$value());
 
-    selectService.onSelect = (value: any) => {
+    this._selectService.onSelect = (value: string) => {
       if (this._onChange) {
         this._$value.set(value);
         this._onChange(value);

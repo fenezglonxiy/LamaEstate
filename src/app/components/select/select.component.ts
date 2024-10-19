@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  PopoverComponent,
-  PopoverContentComponent,
-  PopoverService,
-} from '../popover';
+import { PopoverContentComponent, PopoverService } from '../popover';
 import { PortableService } from '../portable';
 import { SelectService } from './select.service';
 
@@ -15,4 +11,11 @@ import { SelectService } from './select.service';
   styleUrl: './select.component.scss',
   providers: [PortableService, PopoverService, SelectService],
 })
-export class SelectComponent extends PopoverComponent {}
+export class SelectComponent {
+  constructor(popoverService: PopoverService) {
+    popoverService.anchorOrigin = {
+      vertical: 'bottom',
+      horizontal: 'left',
+    };
+  }
+}
