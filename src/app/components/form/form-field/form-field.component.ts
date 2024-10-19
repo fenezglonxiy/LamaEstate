@@ -11,10 +11,10 @@ import { FormFieldService } from './form-field.service';
   providers: [FormFieldService],
 })
 export class FormFieldComponent implements OnInit {
-  @Input({ required: true })
-  control: AbstractControl | null = null;
-
   private _formFieldService = inject(FormFieldService);
+
+  @Input({ required: true })
+  control!: AbstractControl;
 
   ngOnInit(): void {
     this._formFieldService.control = this.control;
