@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Optional } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { FormFieldService, FormItemService } from '../form';
@@ -15,10 +15,7 @@ export class InputComponent implements OnInit {
   placeholder = '';
 
   @Input()
-  type: 'text' | 'number' = 'text';
-
-  @Input()
-  wFull = false;
+  type: 'text' | 'number' | undefined = 'text';
 
   @Input()
   hFull = false;
@@ -30,14 +27,18 @@ export class InputComponent implements OnInit {
   describedby = '';
 
   constructor(
-    private _formFieldService: FormFieldService,
-    formItemService: FormItemService
+    @Optional() private _formItemService?: FormItemService,
+    @Optional() private _formFieldService?: FormFieldService
   ) {
-    this.id = formItemService.formItemId;
-    this.describedby = formItemService.formDescriptionId;
+    if (this._formItemService) {
+      this.id = this._formItemService.formItemId;
+      this.describedby = this._formItemService.formDescriptionId;
+    }
   }
 
   ngOnInit(): void {
-    this.control = this._formFieldService.control as NonNullable<FormControl>;
+    if (this._formFieldService) {
+      this.control = this._formFieldService.control as NonNullable<FormControl>;
+    }
   }
 }

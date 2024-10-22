@@ -10,6 +10,7 @@
   --border-right: 1px solid var(--border-color, --border-top-color);
   --border-bottom: 1px solid var(--border-color, --border-top-color);
   --border-left: 1px solid var(--border-color, --border-top-color);
+  display: block;
 }
 
 .app-input {
@@ -19,10 +20,7 @@
   border-right: var(--border-right);
   border-bottom: var(--border-bottom);
   border-left: var(--border-left);
-
-  &.w-full {
-    width: 100%;
-  }
+  width: 100%;
 
   &.h-full {
     height: 100%;
