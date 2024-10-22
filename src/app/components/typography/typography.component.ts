@@ -16,7 +16,15 @@ export class TypographyComponent implements OnInit {
   @HostBinding('for') @Input() for = '';
 
   @Input()
-  variant: 'body' | 'h1' | 'h2' | 'h3' | 'h4' = 'body';
+  variant:
+    | 'body'
+    | 'label'
+    | 'labelBold'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h4Bold' = 'body';
 
   className = '';
 
