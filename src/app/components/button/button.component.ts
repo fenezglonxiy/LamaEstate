@@ -9,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
   @Input()
-  variant: 'contained' | 'text' | undefined;
+  variant: 'contained' | 'outlined' | 'text' | undefined;
 
   @Input()
   color: 'primary' | undefined;
@@ -19,6 +19,9 @@ export class ButtonComponent implements OnInit {
 
   @Input()
   wFull = false;
+
+  @Input()
+  hFull = false;
 
   @Input()
   type: 'submit' | 'button' = 'button';
@@ -51,6 +54,12 @@ export class ButtonComponent implements OnInit {
       wFullClassName = 'app-button-w-full';
     }
 
-    this.className = `app-button ${variantClassName} ${colorClassName} ${sizeClassName} ${wFullClassName}`;
+    let hFullClassName = '';
+
+    if (this.hFull) {
+      hFullClassName = 'app-button-h-full';
+    }
+
+    this.className = `app-button ${variantClassName} ${colorClassName} ${sizeClassName} ${wFullClassName} ${hFullClassName}`;
   }
 }
