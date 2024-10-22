@@ -2,6 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { PopoverService, PopoverTriggerDirective } from '../../popover';
 import { SelectService } from '../select.service';
 import { SelectTriggerService } from './select-trigger.service';
+import { FormItemService } from '../../form';
 
 @Component({
   selector: 'app-select-trigger',
@@ -23,11 +24,18 @@ export class SelectTriggerComponent implements AfterViewInit {
 
   fontSize = 16;
 
+  id = '';
+
+  describedby = '';
+
   constructor(
     private _popoverService: PopoverService,
+    private _formItemService: FormItemService,
     private _selectService: SelectService,
     private _selectTriggerService: SelectTriggerService
   ) {
+    this.id = this._formItemService.formItemId;
+    this.describedby = this._formItemService.formDescriptionId;
     this._selectTriggerService.fontFamily = 'Lato';
     this._selectTriggerService.fontSize = 16;
   }
@@ -37,9 +45,11 @@ export class SelectTriggerComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this._selectService.maxTriggerWidth =
+    const maxWidth =
       this._selectTriggerService.longestLabelWidth +
       this.paddingInline * 2 +
       this.borderWidth * 2;
+
+    this._selectService.maxTriggerWidth = maxWidth;
   }
 }

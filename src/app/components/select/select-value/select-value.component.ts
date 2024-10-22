@@ -31,7 +31,6 @@ export class SelectValueComponent implements AfterViewInit {
     if (context && longestLabel) {
       context.font = font;
       const width = context.measureText(longestLabel).width;
-      console.log(width);
       this._selectTriggerService.longestLabelWidth = Math.ceil(width);
     }
   }

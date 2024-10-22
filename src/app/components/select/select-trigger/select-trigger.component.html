@@ -1,12 +1,14 @@
 <button
   type="button"
   class="app-select-trigger"
+  [id]="id"
   [style.fontFamily]="fontFamily"
   [style.fontSize]="fontSize + 'px'"
   [style.paddingBlock]="paddingBlock + 'px'"
   [style.paddingInline]="paddingInline + 'px'"
   [style.borderWidth]="borderWidth + 'px'"
   [attr.aria-expanded]="isContentShowed"
+  [attr.aria-describedby]="describedby"
 >
   <span>
     <ng-content />

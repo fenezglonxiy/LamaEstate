@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {
+  AfterContentInit,
   Component,
   computed,
   effect,
@@ -9,7 +10,6 @@ import {
   OnInit,
   ViewContainerRef,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { SelectService } from '../select.service';
 
 @Component({
@@ -19,7 +19,7 @@ import { SelectService } from '../select.service';
   templateUrl: './select-item.component.html',
   styleUrl: './select-item.component.scss',
 })
-export class SelectItemComponent implements OnInit {
+export class SelectItemComponent implements OnInit, AfterContentInit {
   @HostBinding('role')
   private _role = 'listitem';
 
@@ -43,10 +43,13 @@ export class SelectItemComponent implements OnInit {
   handleSelect: ((value: string) => void) | undefined;
 
   ngOnInit(): void {
+    this.handleSelect = this._selectService.onSelect;
+  }
+
+  ngAfterContentInit(): void {
     this._selectService.registerItem(
       this.value,
       this._vcr.element.nativeElement.innerText
     );
-    this.handleSelect = this._selectService.onSelect;
   }
 }
