@@ -1,1 +1,45 @@
-<p>estate-list-item works!</p>
+<div class="estate-thumbnail">
+  <app-link href="/" appFillUpSpace [hFull]="true">
+    <img
+      src="https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      alt=""
+    />
+  </app-link>
+</div>
+
+<div class="estate-description">
+  <app-link class="estate-name" href="/">
+    <app-typography variant="h4Bold" displayAs="h4"
+      >A New Apartment in the City!</app-typography
+    >
+  </app-link>
+
+  <div class="estate-address">
+    <div class="icon">
+      <img src="assets/pin.png" alt="pin icon" />
+    </div>
+    <app-typography variant="label">456 Park Avenue, London</app-typography>
+  </div>
+
+  <app-estate-list-item-price-tag [price]="1000" />
+
+  <div class="estate-room-information-and-cta">
+    <div class="estate-room-information flow-spacer-x">
+      <app-estate-list-item-room-tag type="bedroom" [quantity]="2" />
+      <app-estate-list-item-room-tag type="bathroom" [quantity]="1" />
+    </div>
+
+    <div class="cta flow-spacer-x">
+      <app-button size="icon" variant="outlined" color="primary">
+        <div class="icon">
+          <img src="assets/save.png" alt="save icon" />
+        </div>
+      </app-button>
+      <app-button size="icon" variant="outlined" color="primary">
+        <div class="icon">
+          <img src="assets/chat.png" alt="chat icon" />
+        </div>
+      </app-button>
+    </div>
+  </div>
+</div>

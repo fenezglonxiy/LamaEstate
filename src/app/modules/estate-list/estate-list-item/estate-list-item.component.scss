@@ -1,0 +1,60 @@
+:host {
+  display: flex;
+  gap: 20px;
+}
+
+.estate-thumbnail {
+  flex: 2;
+  height: 200px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+}
+
+.estate-description {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .estate-name {
+    color: #444;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &:focus {
+      color: #000;
+      scale: 1.01;
+    }
+  }
+
+  .estate-address {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #888;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .estate-room-information-and-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .estate-room-information {
+      --flow-spacing-x: 1.25rem;
+    }
+
+    .cta {
+      --flow-spacing-x: 1.25rem;
+    }
+  }
+}

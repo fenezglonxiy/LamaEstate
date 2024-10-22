@@ -1,0 +1,12 @@
+<div class="icon">
+  <ng-container [ngSwitch]="type">
+    <img src="assets/bed.png" alt="bed icon" *ngSwitchCase="'bedroom'" />
+    <img
+      class="icon"
+      src="assets/bath.png"
+      alt="bath icon"
+      *ngSwitchCase="'bathroom'"
+    />
+  </ng-container>
+</div>
+<app-typography variant="labelBold">{{ quantity }} {{ type }}</app-typography>
