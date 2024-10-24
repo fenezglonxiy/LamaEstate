@@ -9,13 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
   @Input()
-  variant: 'contained' | 'outlined' | 'text' | undefined;
+  variant: 'contained' | 'outlined' | 'ghost' | 'text' | undefined;
 
   @Input()
-  color: 'primary' | undefined;
+  color: 'primary' | 'secondary' = 'primary';
 
   @Input()
-  size: 'base' | 'icon' | 'icon-md' | 'auto' | undefined;
+  size: 'sm' | 'base' | 'icon' | 'icon-md' | 'icon-lg' | 'auto' | undefined;
 
   @Input()
   wFull = false;
@@ -26,38 +26,39 @@ export class ButtonComponent implements OnInit {
   @Input()
   type: 'submit' | 'button' = 'button';
 
+  @Input()
+  disabled = false;
+
   className = '';
 
   ngOnInit(): void {
-    const base = `app-button-${this.variant}`;
     let variantClassName = '';
-
-    if (this.variant !== undefined) {
-      variantClassName = base;
-    }
-
     let colorClassName = '';
 
-    if (this.color !== undefined) {
-      colorClassName = `${base}-${this.color}`;
+    if (this.variant !== undefined) {
+      variantClassName = this.variant;
+
+      if (this.color !== undefined) {
+        colorClassName = `${this.variant}-${this.color}`;
+      }
     }
 
     let sizeClassName = '';
 
     if (this.size !== undefined) {
-      sizeClassName = `app-button-${this.size}`;
+      sizeClassName = this.size;
     }
 
     let wFullClassName = '';
 
     if (this.wFull) {
-      wFullClassName = 'app-button-w-full';
+      wFullClassName = 'w-full';
     }
 
     let hFullClassName = '';
 
     if (this.hFull) {
-      hFullClassName = 'app-button-h-full';
+      hFullClassName = 'h-full';
     }
 
     this.className = `app-button ${variantClassName} ${colorClassName} ${sizeClassName} ${wFullClassName} ${hFullClassName}`;

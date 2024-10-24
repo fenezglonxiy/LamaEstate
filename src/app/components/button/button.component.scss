@@ -8,50 +8,87 @@
   justify-content: center;
   gap: 0.5rem;
 
-  &-base {
+  &.sm {
+    min-width: 48px;
+    height: 40px;
+    padding: 0.5rem 1rem;
+  }
+
+  &.base {
     min-width: 72px;
     height: 48px;
     padding: 0.75rem 1.5rem;
   }
 
-  &-icon {
+  &.icon {
     width: 24px;
     height: 24px;
 
     &-md {
-      width: 48px;
-      height: 48px;
+      width: 40px;
+      height: 40px;
+    }
+
+    &-lg {
+      width: 64px;
+      height: 64px;
     }
   }
 
-  &-contained {
-    background-color: var(--button-contained-color, #fece51);
+  &.contained {
+    background-color: var(--button-contained-color);
 
     &-primary {
       --button-contained-color: #fece51;
     }
   }
 
-  &-outlined {
-    border: 1px solid var(--button-outlined-color, #999);
+  &.outlined {
+    border: 1px solid var(--button-outlined-color);
     border-radius: 4px;
 
+    &:hover,
+    &:focus {
+      background-color: var(--button-outlined-color);
+    }
+
     &-primary {
+      --button-outlined-color: #fece51;
+    }
+
+    &-secondary {
       --button-outlined-color: #999;
     }
   }
 
-  &-text {
+  &.ghost {
+    border-radius: 4px;
+
+    &:hover,
+    &:focus {
+      background-color: var(--button-ghost-color);
+    }
+
+    &-primary {
+      --button-ghost-color: #fece51;
+    }
+
+    &-secondary {
+      --button-ghost-color: #999;
+    }
+  }
+
+  &.text {
     &:hover {
       background-color: var(--button-text-color, transparent);
     }
   }
 
-  &-w-full {
+  &.w-full {
     width: 100%;
   }
 
-  &-h-full {
+  &.h-full {
     height: 100%;
   }
 }
