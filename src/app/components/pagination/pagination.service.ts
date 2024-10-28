@@ -9,13 +9,6 @@ export class PaginationService {
 
   $canGotoNext = computed(() => this.$pageNo() < this._pageHref.length);
 
-  navigateByUrl:
-    | ((
-        url: string | UrlTree,
-        extras?: NavigationBehaviorOptions
-      ) => Promise<boolean>)
-    | undefined;
-
   private _$pageNo = signal(0);
 
   private _pageHref: Array<string> = [];

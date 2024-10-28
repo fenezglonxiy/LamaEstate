@@ -6,8 +6,10 @@ import {
   FormFieldComponent,
   FormItemComponent,
   FormLabelComponent,
-} from '../../../../components/form-field';
+} from '../../../../components/form';
 import { InputComponent } from '../../../../components/input';
+import { CommonModule } from '@angular/common';
+import { FillUpSpaceDirective } from '../../../../directives';
 
 @Component({
   selector: 'app-home-hero-estate-search-bar',
@@ -20,6 +22,8 @@ import { InputComponent } from '../../../../components/input';
     FormLabelComponent,
     FormControlComponent,
     InputComponent,
+    CommonModule,
+    FillUpSpaceDirective,
   ],
   templateUrl: './estate-search-bar.component.html',
   styleUrl: './estate-search-bar.component.scss',
@@ -27,15 +31,27 @@ import { InputComponent } from '../../../../components/input';
 export class EstateSearchBarComponent {
   fb = inject(FormBuilder);
 
-  locationFormControl = this.fb.control('');
-
-  minPriceFormControl = this.fb.control('');
-
-  maxPriceFormControl = this.fb.control('');
-
-  estateSearchForm = this.fb.nonNullable.group({
-    location: this.locationFormControl,
-    minPrice: this.minPriceFormControl,
-    maxPrice: this.maxPriceFormControl,
+  estateSearchFormGroupModel = this.fb.nonNullable.group({
+    location: this.fb.control(''),
+    minPrice: this.fb.control(''),
+    maxPrice: this.fb.control(''),
   });
+
+  readonly estateSearchFormFields = [
+    {
+      control: this.estateSearchFormGroupModel.controls.location,
+      type: 'text',
+      placeholder: 'City Location',
+    },
+    {
+      control: this.estateSearchFormGroupModel.controls.minPrice,
+      type: 'number',
+      placeholder: 'Min Price',
+    },
+    {
+      control: this.estateSearchFormGroupModel.controls.maxPrice,
+      type: 'number',
+      placeholder: 'Max Price',
+    },
+  ] as const;
 }
