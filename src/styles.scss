@@ -96,9 +96,9 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 24px;
 }
 
-.overflow-ellipsis-line {
+.text-overflow-line {
   display: -webkit-box;
-  -webkit-line-clamp: var(--line-clamp, 2);
+  -webkit-line-clamp: var(--line-clamp);
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

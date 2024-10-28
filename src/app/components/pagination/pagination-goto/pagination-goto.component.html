@@ -1,1 +1,9 @@
-<app-input />
+<app-form-field [control]="destFormControl">
+  <app-form-control>
+    <app-input class="destInput" type="number" />
+  </app-form-control>
+</app-form-field>
+
+<app-typography displayAs="span">/</app-typography>
+
+<app-typography>100</app-typography>

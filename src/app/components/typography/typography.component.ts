@@ -1,4 +1,11 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  inject,
+  Input,
+  OnInit,
+  ViewContainerRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -26,9 +33,30 @@ export class TypographyComponent implements OnInit {
     | 'h4'
     | 'h4Bold' = 'body';
 
+  @Input()
+  ellipsisLineClamp = 0;
+
+  @HostBinding('style.display')
+  private _display = 'block';
+
+  private _vcr = inject(ViewContainerRef);
+
   className = '';
 
   ngOnInit(): void {
-    this.className = `app-typography-${this.variant}`;
+    const variantClassName = `app-typography-${this.variant}`;
+
+    if (this.displayAs === 'span') {
+      this._display = 'inline';
+    }
+
+    let textOverflowClassName = '';
+
+    if (this.ellipsisLineClamp > 0) {
+      textOverflowClassName = 'text-overflow-line';
+      this._vcr.element.nativeElement.style.setProperty('--line-clamp', 2);
+    }
+
+    this.className = `${variantClassName} ${textOverflowClassName}`;
   }
 }

@@ -1,5 +1,5 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { NavigationBehaviorOptions, Router, UrlTree } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PaginationService {
