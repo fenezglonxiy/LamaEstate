@@ -1,6 +1,4 @@
 .app-estate-list {
-  align-items: flex-start;
-
   .estate-list-section {
     .estate-list {
       padding-right: 3rem;
@@ -16,4 +14,10 @@
       }
     }
   }
+}
+
+.estate-list-pagination-section {
+  display: flex;
+  justify-content: center;
+  margin-block: 2rem;
 }

@@ -1,4 +1,4 @@
-<div class="app-estate-list flex-3-2">
+<div class="app-estate-list grid-3-2">
   <div class="estate-list-section">
     <div class="estate-list flow-spacer-y">
       <app-estate-list-estate-search />
@@ -16,28 +16,28 @@
         />
         }
       </ul>
-
-      <div class="estate-list-pagination">
-        <app-pagination>
-          <app-pagination-content>
-            <app-pagination-item>
-              <app-pagination-previous />
-            </app-pagination-item>
-
-            <app-pagination-item>
-              <app-pagination-goto />
-            </app-pagination-item>
-
-            <app-pagination-item>
-              <app-pagination-next />
-            </app-pagination-item>
-          </app-pagination-content>
-        </app-pagination>
-      </div>
     </div>
   </div>
 
   <div class="estate-location-map-section">
     <app-estate-list-estate-location-map />
   </div>
+</div>
+
+<div class="estate-list-pagination-section">
+  <app-pagination>
+    <app-pagination-content>
+      <app-pagination-item>
+        <app-pagination-previous />
+      </app-pagination-item>
+
+      <app-pagination-item>
+        <app-pagination-goto />
+      </app-pagination-item>
+
+      <app-pagination-item>
+        <app-pagination-next />
+      </app-pagination-item>
+    </app-pagination-content>
+  </app-pagination>
 </div>
