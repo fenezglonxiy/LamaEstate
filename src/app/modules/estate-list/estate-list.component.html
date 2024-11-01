@@ -6,8 +6,8 @@
       <ul class="flow-spacer-y">
         @for (estate of estateData; track estate.id) {
         <app-estate-list-item
-          [id]="estate.id"
-          [thumbnailSrc]="estate.thumbnailSrc"
+          [estateId]="estate.id"
+          [estateThumbnailSrc]="estate.thumbnailSrc"
           [estateName]="estate.name"
           [estateAddress]="estate.address"
           [estatePrice]="estate.price"
@@ -20,7 +20,7 @@
   </div>
 
   <div class="estate-location-map-section">
-    <app-estate-list-estate-location-map />
+    <app-estate-location-map />
   </div>
 </div>
 

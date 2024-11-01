@@ -1,4 +1,6 @@
 .app-estate-list {
+  align-items: flex-start;
+
   .estate-list-section {
     .estate-list {
       padding-right: 3rem;
@@ -13,6 +15,10 @@
         margin-block: 1rem;
       }
     }
+  }
+
+  .estate-location-map-section {
+    height: 100%;
   }
 }
 

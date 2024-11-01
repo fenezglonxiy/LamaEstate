@@ -23,15 +23,19 @@ export class TypographyComponent implements OnInit {
   @HostBinding('for') @Input() for = '';
 
   @Input()
-  variant:
-    | 'body'
-    | 'label'
-    | 'labelBold'
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h4Bold' = 'body';
+  variant: 'body' | 'label' | 'h1' | 'h2' | 'h3' | 'h4' = 'body';
+
+  @Input()
+  fontWeight:
+    | 'thin'
+    | 'extralight'
+    | 'light'
+    | 'normal'
+    | 'medium'
+    | 'semibold'
+    | 'bold'
+    | 'extrabold'
+    | 'black' = 'normal';
 
   @Input()
   ellipsisLineClamp = 0;
@@ -44,7 +48,8 @@ export class TypographyComponent implements OnInit {
   className = '';
 
   ngOnInit(): void {
-    const variantClassName = `app-typography-${this.variant}`;
+    const baseClassName = 'app-typography';
+    const variantClassName = `${baseClassName}-${this.variant}`;
 
     if (this.displayAs === 'span') {
       this._display = 'inline';
@@ -53,10 +58,15 @@ export class TypographyComponent implements OnInit {
     let textOverflowClassName = '';
 
     if (this.ellipsisLineClamp > 0) {
-      textOverflowClassName = 'text-overflow-line';
-      this._vcr.element.nativeElement.style.setProperty('--line-clamp', 2);
+      textOverflowClassName = `${baseClassName}-overflow-line`;
+      this._vcr.element.nativeElement.style.setProperty(
+        '--line-clamp',
+        this.ellipsisLineClamp
+      );
     }
 
-    this.className = `${variantClassName} ${textOverflowClassName}`;
+    const fontWeightClassName = `${baseClassName}-${this.fontWeight}`;
+
+    this.className = `${variantClassName} ${textOverflowClassName} ${fontWeightClassName}`;
   }
 }

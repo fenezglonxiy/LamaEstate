@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { PriceTagComponent } from './price-tag/price-tag.component';
 import { RoomTagComponent } from './room-tag/room-tag.component';
 import { FillUpSpaceDirective } from '../../../directives';
@@ -20,12 +20,15 @@ import { ButtonComponent } from '../../../components/button';
   templateUrl: './estate-list-item.component.html',
   styleUrl: './estate-list-item.component.scss',
 })
-export class EstateListItemComponent {
+export class EstateListItemComponent implements OnInit {
   @Input({ required: true })
-  thumbnailSrc = '';
+  estateId = 0;
+
+  @Input({ required: true })
+  estateThumbnailSrc = '';
 
   @Input()
-  thumbnailAlt = '';
+  estateThumbnailAlt = '';
 
   @Input({ required: true })
   estateName = '';
@@ -44,4 +47,10 @@ export class EstateListItemComponent {
 
   @HostBinding('role')
   private _role = 'listitem';
+
+  href = '';
+
+  ngOnInit(): void {
+    this.href = `/list/${this.estateId}`;
+  }
 }

@@ -1,0 +1,17 @@
+<div class="estate-thumbnail-section">
+  <img [src]="estateThumbnailSrc" [alt]="estateThumbnailAlt" />
+</div>
+
+<div class="estate-description-section">
+  <app-typography [ellipsisLineClamp]="1">
+    <a [routerLink]="href">{{ estateName }}</a>
+  </app-typography>
+
+  <app-typography>{{ estateBedroomQuantity }} bedroom</app-typography>
+
+  <app-typography fontWeight="bold">
+    <app-typography displayAs="span">$ </app-typography>
+
+    {{ estatePrice }}
+  </app-typography>
+</div>

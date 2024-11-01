@@ -1,14 +1,18 @@
 <div class="estate-thumbnail">
-  <app-link href="/" appFillUpSpace [hFull]="true">
-    <img [src]="thumbnailSrc" [alt]="thumbnailAlt" />
+  <app-link [href]="href" appFillUpSpace [hFull]="true">
+    <img [src]="estateThumbnailSrc" [alt]="estateThumbnailAlt" />
   </app-link>
 </div>
 
 <div class="estate-description">
-  <app-link class="estate-name" href="/">
-    <app-typography variant="h4Bold" displayAs="h4" [ellipsisLineClamp]="2">{{
-      estateName
-    }}</app-typography>
+  <app-link class="estate-name" [href]="href">
+    <app-typography
+      variant="h4"
+      fontWeight="bold"
+      displayAs="h4"
+      [ellipsisLineClamp]="2"
+      >{{ estateName }}</app-typography
+    >
   </app-link>
 
   <div class="estate-address">

@@ -4,6 +4,7 @@ import {
   ContentChild,
   inject,
   Input,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
 import { latLng, Marker, marker, MarkerOptions } from 'leaflet';

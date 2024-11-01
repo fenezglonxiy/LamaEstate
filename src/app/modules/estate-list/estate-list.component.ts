@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { EstateSearchComponent } from './estate-search/estate-search.component';
-import { EstateLocationMapComponent } from './estate-location-map/estate-location-map.component';
 import {
   PaginationComponent,
   PaginationContentComponent,
@@ -13,13 +12,13 @@ import {
 } from '../../components/pagination';
 import { EstateListItemComponent } from './estate-list-item/estate-list-item.component';
 import { estateData } from './dummy-data';
+import { EstateLocationMapComponent } from './estate-location-map';
 
 @Component({
   selector: 'app-estate-list',
   standalone: true,
   imports: [
     EstateSearchComponent,
-    EstateLocationMapComponent,
     EstateListItemComponent,
     PaginationComponent,
     PaginationContentComponent,
@@ -29,6 +28,7 @@ import { estateData } from './dummy-data';
     PaginationNextComponent,
     PaginationEllipsisComponent,
     PaginationGotoComponent,
+    EstateLocationMapComponent,
   ],
   templateUrl: './estate-list.component.html',
   styleUrl: './estate-list.component.scss',

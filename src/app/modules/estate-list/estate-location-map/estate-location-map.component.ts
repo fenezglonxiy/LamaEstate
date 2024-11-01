@@ -1,55 +1,76 @@
-import { Component } from '@angular/core';
-import { LeafletModule } from '@bluehalo/ngx-leaflet';
-import { circle, icon, latLng, marker, polygon, tileLayer } from 'leaflet';
+import { Component, inject } from '@angular/core';
+import { icon, latLng, Point, tileLayer } from 'leaflet';
+import {
+  MapComponent,
+  MapMarkerComponent,
+  MapPopupComponent,
+} from '../../../components/map';
+import { EstateLocationMapPopupService } from './estate-location-map-popup/estate-location-map-popup.service';
+import { estateData } from '../dummy-data';
 
 @Component({
-  selector: 'app-estate-list-estate-location-map',
+  selector: 'app-estate-location-map',
   standalone: true,
-  imports: [LeafletModule],
+  imports: [MapComponent, MapMarkerComponent, MapPopupComponent],
   templateUrl: './estate-location-map.component.html',
   styleUrl: './estate-location-map.component.scss',
+  providers: [EstateLocationMapPopupService],
 })
 export class EstateLocationMapComponent {
-  options = {
-    layers: [
-      tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '...',
+  private readonly _markerIconUrl = 'assets/marker-icon.png';
+  private readonly _markerIconRetinaUrl = 'assets/marker-icon-2x.png';
+  private readonly _markerShadowUrl = 'assets/marker-shadow.png';
+  private _estateLocationMapPopupService = inject(
+    EstateLocationMapPopupService
+  );
+
+  estateData = estateData.slice(0, 5);
+
+  map = {
+    options: {
+      layers: [
+        tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: '...',
+        }),
+      ],
+      scrollWheelZoom: false,
+      zoom: 12,
+      center: latLng(53.4084, -2.9916),
+    },
+  };
+
+  private readonly _popupOffset = new Point(0, -30);
+
+  private readonly _popupMinWidth = 200;
+
+  popups = this.estateData.map((item) => ({
+    options: {
+      content: this._estateLocationMapPopupService.createPopup(
+        item.id,
+        item.thumbnailSrc,
+        '',
+        item.name,
+        item.price,
+        item.bedroomQuantity
+      ),
+      offset: this._popupOffset,
+      minWidth: this._popupMinWidth,
+    },
+  }));
+
+  markers = this.estateData.map((item) => ({
+    id: item.id,
+    latitude: item.latitude,
+    longitude: item.longitude,
+    options: {
+      icon: icon({
+        iconSize: [25, 41],
+        iconAnchor: [13, 41],
+        iconUrl: this._markerIconUrl,
+        iconRetinaUrl: this._markerIconRetinaUrl,
+        shadowUrl: this._markerShadowUrl,
       }),
-    ],
-    zoom: 12,
-    center: latLng(53.4084, -2.9916),
-  };
-
-  layer = marker(latLng(53.4084, -2.9916), {
-    icon: icon({
-      iconSize: [25, 41],
-      iconAnchor: [13, 41],
-      iconUrl: 'assets/marker-icon.png',
-      iconRetinaUrl: 'assets/marker-icon-2x.png',
-      shadowUrl: 'assets/marker-shadow.png',
-    }),
-  });
-
-  layersControl = {
-    baseLayers: {
-      'Open Street Map': tileLayer(
-        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        { maxZoom: 18, attribution: '...' }
-      ),
-      'Open Cycle Map': tileLayer(
-        'https://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png',
-        { maxZoom: 18, attribution: '...' }
-      ),
     },
-    overlays: {
-      'Big Circle': circle([46.95, -122], { radius: 5000 }),
-      'Big Square': polygon([
-        [46.8, -121.55],
-        [46.9, -121.55],
-        [46.9, -121.7],
-        [46.8, -121.7],
-      ]),
-    },
-  };
+  }));
 }

@@ -53,27 +53,18 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.flex-3-2 {
-  display: flex;
+.grid-3-2 {
+  display: grid;
   align-items: center;
-
-  & > *:first-child {
-    flex: 3;
-  }
+  grid-template-columns: 3fr 2fr;
 
   & > *:last-child {
-    flex: 2;
     background-color: #fcf5f3;
 
     @include md {
       background-color: transparent;
     }
   }
-}
-
-.grid-3-2 {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
 }
 
 .h-full {
@@ -101,10 +92,6 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 24px;
 }
 
-.text-overflow-line {
-  display: -webkit-box;
-  -webkit-line-clamp: var(--line-clamp);
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.leaflet-popup-content p {
+  margin: 0 !important;
 }
