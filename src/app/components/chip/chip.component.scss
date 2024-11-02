@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.375rem;
+  border-radius: 4px;
+
+  &.app-chip {
+    &-contained {
+      background-color: var(--chip-color);
+    }
+
+    &-horizontal {
+      flex-direction: row;
+    }
+
+    &-vertical {
+      flex-direction: column;
+    }
+  }
+}

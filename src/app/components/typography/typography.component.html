@@ -1,9 +1,18 @@
 <ng-container
   [ngTemplateOutlet]="
-    { span: span, div: div, p: p, h1: h1, h2: h2, h3: h3, h4: h4 }[displayAs()]
+    {
+      span: span,
+      div: div,
+      p: p,
+      h1: h1,
+      h2: h2,
+      h3: h3,
+      h4: h4,
+      label: label
+    }[displayAs]
   "
   [ngTemplateOutletContext]="{
-    $implicit: { content: tmplContent, className: className() }
+    $implicit: { content: tmplContent, className: className }
   }"
 ></ng-container>
 
@@ -47,6 +56,12 @@
   <h4 [className]="data.className">
     <ng-container [ngTemplateOutlet]="data.content"></ng-container>
   </h4>
+</ng-template>
+
+<ng-template #label let-data>
+  <label [className]="data.className" [for]="for">
+    <ng-container [ngTemplateOutlet]="data.content"></ng-container>
+  </label>
 </ng-template>
 
 <ng-template #tmplContent>

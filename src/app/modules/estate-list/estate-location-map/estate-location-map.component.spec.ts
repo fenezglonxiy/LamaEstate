@@ -11,7 +11,7 @@ describe('EstateLocationMapComponent', () => {
       imports: [EstateLocationMapComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(EstateLocationMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

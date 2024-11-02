@@ -1,11 +1,26 @@
-<form class="estate-search-bar">
-  <input type="text" placeholder="City Location" />
-  <input type="number" placeholder="Min Price" />
-  <input type="number" placeholder="Max Price" />
+<form class="estate-search-bar" [formGroup]="estateSearchFormGroupModel">
+  <ng-container *ngFor="let formField of estateSearchFormFields">
+    <app-form-field [control]="formField.control">
+      <app-form-item appFillUpSpace [wFull]="true" [hFull]="true">
+        <app-form-control appFillUpSpace [wFull]="true" [hFull]="true">
+          <app-input
+            [type]="formField.type"
+            class="estate-search-input"
+            [placeholder]="formField.placeholder"
+            appFillUpSpace
+            [wFull]="true"
+            [hFull]="true"
+          />
+        </app-form-control>
+      </app-form-item>
+    </app-form-field>
+  </ng-container>
+
   <app-button
+    type="submit"
     variant="contained"
     color="primary"
-    size="icon-md"
+    size="icon-lg"
     class="search-button"
     [wFull]="true"
   >

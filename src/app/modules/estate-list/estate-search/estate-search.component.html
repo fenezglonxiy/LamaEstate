@@ -1,16 +1,61 @@
 <app-typography variant="h4" displayAs="p">Search results for</app-typography>
 
-<form>
-  <app-text-field />
+<form class="estate-search-form" [formGroup]="estateSearchFormGroupModel">
+  <ng-container *ngFor="let formField of estateSearchForm">
+    <ng-container [ngSwitch]="formField.model">
+      <ng-container *ngSwitchCase="'input'">
+        <app-form-field
+          [control]="formField.control"
+          [className]="formField.className"
+        >
+          <app-form-item>
+            <app-form-label>{{ formField.label }}</app-form-label>
+            <app-form-control>
+              <app-input
+                [type]="formField.type"
+                [placeholder]="formField.placeholder"
+              />
+            </app-form-control>
+          </app-form-item>
+        </app-form-field>
+      </ng-container>
 
-  <div>
-    <app-text-field />
-    <app-text-field />
-    <app-text-field />
-    <app-text-field />
-    <app-text-field />
-    <app-button variant="contained" color="primary" size="base">
-      <img class="search-icon" src="assets/search.png" alt="search icon" />
-    </app-button>
-  </div>
+      <ng-container *ngSwitchCase="'select'">
+        <app-form-field
+          [control]="formField.control"
+          [className]="formField.className"
+        >
+          <app-form-item>
+            <app-form-label>{{ formField.label }}</app-form-label>
+            <app-select>
+              <app-form-control>
+                <app-select-trigger>
+                  <app-select-value [placeholder]="formField.placeholder" />
+                </app-select-trigger>
+              </app-form-control>
+              <app-select-content-registrator>
+                <app-select-content>
+                  <ng-container *ngFor="let option of formField.options">
+                    <app-select-item [value]="option.value">{{
+                      option.label
+                    }}</app-select-item>
+                  </ng-container>
+                </app-select-content>
+              </app-select-content-registrator>
+            </app-select>
+          </app-form-item>
+        </app-form-field>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+  <app-button
+    type="submit"
+    variant="contained"
+    color="primary"
+    size="base"
+    (click)="handleSubmit()"
+  >
+    <img class="search-icon" src="assets/search.png" alt="search icon" />
+  </app-button>
 </form>

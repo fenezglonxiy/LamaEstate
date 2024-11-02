@@ -1,1 +1,52 @@
-<p>estate-list-item works!</p>
+<div class="estate-thumbnail">
+  <app-link [href]="href" appFillUpSpace [hFull]="true">
+    <img [src]="estateThumbnailSrc" [alt]="estateThumbnailAlt" />
+  </app-link>
+</div>
+
+<div class="estate-description">
+  <app-link class="estate-name" [href]="href">
+    <app-typography
+      variant="h4"
+      fontWeight="bold"
+      displayAs="h4"
+      [ellipsisLineClamp]="2"
+      >{{ estateName }}</app-typography
+    >
+  </app-link>
+
+  <div class="estate-address">
+    <div class="icon">
+      <img src="assets/pin.png" alt="pin icon" />
+    </div>
+    <app-typography variant="label">{{ estateAddress }}</app-typography>
+  </div>
+
+  <app-estate-list-item-price-tag [price]="estatePrice" />
+
+  <div class="estate-room-information-and-cta">
+    <div class="estate-room-information">
+      <app-estate-list-item-room-tag
+        type="bedroom"
+        [quantity]="estateBedroomQuantity"
+      />
+      <app-estate-list-item-room-tag
+        type="bathroom"
+        [quantity]="estateBathroomQuantity"
+      />
+    </div>
+
+    <div class="cta flow-spacer-x">
+      <app-button size="icon" variant="outlined" color="secondary">
+        <div class="icon">
+          <img src="assets/save.png" alt="save icon" />
+        </div>
+      </app-button>
+      <app-button size="icon" variant="outlined" color="secondary">
+        <div class="icon">
+          <img src="assets/chat.png" alt="chat icon" />
+        </div>
+      </app-button>
+    </div>
+  </div>
+</div>

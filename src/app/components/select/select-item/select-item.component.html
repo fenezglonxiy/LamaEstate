@@ -1,0 +1,9 @@
+<div
+  class="app-select-option"
+  role="option"
+  [attr.data-value]="value"
+  [attr.aria-selected]="$selected()"
+  (click)="handleSelect?.(value)"
+>
+  <ng-content />
+</div>

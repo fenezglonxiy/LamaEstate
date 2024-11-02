@@ -1,10 +1,11 @@
 export const estateData = [
   {
     id: 1,
-    title: 'A Great Apartment Next to the Beach!',
-    img: 'https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    bedroom: 2,
-    bathroom: 1,
+    name: 'A Great Apartment Next to the Beach!',
+    thumbnailSrc:
+      'https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    bedroomQuantity: 2,
+    bathroomQuantity: 1,
     price: 1000,
     address: '456 Park Avenue, London',
     latitude: 51.5074,
@@ -12,10 +13,11 @@ export const estateData = [
   },
   {
     id: 2,
-    title: 'An Awesome Apartment Near the Park! Almost too good to be true!',
-    img: 'https://images.pexels.com/photos/1428348/pexels-photo-1428348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    bedroom: 3,
-    bathroom: 2,
+    name: 'An Awesome Apartment Near the Park! Almost too good to be true!',
+    thumbnailSrc:
+      'https://images.pexels.com/photos/1428348/pexels-photo-1428348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    bedroomQuantity: 3,
+    bathroomQuantity: 2,
     price: 1500,
     address: '789 Oxford Street, London',
     latitude: 52.4862,
@@ -23,10 +25,11 @@ export const estateData = [
   },
   {
     id: 3,
-    title: 'A New Apartment in the City!',
-    img: 'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    bedroom: 1,
-    bathroom: 1,
+    name: 'A New Apartment in the City!',
+    thumbnailSrc:
+      'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    bedroomQuantity: 1,
+    bathroomQuantity: 1,
     price: 800,
     address: '101 Baker Street, London',
     latitude: 53.4808,
@@ -34,10 +37,11 @@ export const estateData = [
   },
   {
     id: 4,
-    title: 'Great Location! Great Price! Great Apartment!',
-    img: 'https://images.pexels.com/photos/2467285/pexels-photo-2467285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    bedroom: 2,
-    bathroom: 1,
+    name: 'Great Location! Great Price! Great Apartment!',
+    thumbnailSrc:
+      'https://images.pexels.com/photos/2467285/pexels-photo-2467285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    bedroomQuantity: 2,
+    bathroomQuantity: 1,
     price: 1000,
     address: '234 Kingsway, London,',
     latitude: 53.8008,
@@ -45,10 +49,11 @@ export const estateData = [
   },
   {
     id: 5,
-    title: 'Apartment 5',
-    img: 'https://images.pexels.com/photos/276625/pexels-photo-276625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    bedroom: 3,
-    bathroom: 2,
+    name: 'Apartment 5',
+    thumbnailSrc:
+      'https://images.pexels.com/photos/276625/pexels-photo-276625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    bedroomQuantity: 3,
+    bathroomQuantity: 2,
     price: 1500,
     address: '567 Victoria Road, London',
     latitude: 53.4084,
@@ -56,10 +61,11 @@ export const estateData = [
   },
   {
     id: 6,
-    title: 'Apartment 6',
-    img: 'https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    bedroom: 1,
-    bathroom: 1,
+    name: 'Apartment 6',
+    thumbnailSrc:
+      'https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    bedroomQuantity: 1,
+    bathroomQuantity: 1,
     price: 800,
     address: '890 Regent Street, London',
     latitude: 54.9783,
@@ -67,10 +73,11 @@ export const estateData = [
   },
   {
     id: 7,
-    title: 'Apartment 7',
-    img: 'https://images.pexels.com/photos/2029667/pexels-photo-2029667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    bedroom: 2,
-    bathroom: 1,
+    name: 'Apartment 7',
+    thumbnailSrc:
+      'https://images.pexels.com/photos/2029667/pexels-photo-2029667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    bedroomQuantity: 2,
+    bathroomQuantity: 1,
     price: 1000,
     address: '112 Piccadilly, London',
     latitude: 53.3811,
@@ -78,10 +85,11 @@ export const estateData = [
   },
   {
     id: 8,
-    title: 'Apartment 8',
-    img: 'https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    bedroom: 3,
-    bathroom: 2,
+    name: 'Apartment 8',
+    thumbnailSrc:
+      'https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    bedroomQuantity: 3,
+    bathroomQuantity: 2,
     price: 1500,
     address: '8765 Main High Street, London',
     latitude: 51.4545,
@@ -91,7 +99,7 @@ export const estateData = [
 
 export const singlePostData = {
   id: 1,
-  title: 'Beautiful Apartment',
+  name: 'Beautiful Apartment',
   price: 1200,
   images: [
     'https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -99,8 +107,8 @@ export const singlePostData = {
     'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     'https://images.pexels.com/photos/2467285/pexels-photo-2467285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   ],
-  bedRooms: 2,
-  bathroom: 1,
+  bedroomQuantitys: 2,
+  bathroomQuantity: 1,
   size: 861,
   latitude: 51.5074,
   longitude: -0.1278,
@@ -116,5 +124,6 @@ export const singlePostData = {
 export const userData = {
   id: 1,
   name: 'John Doe',
-  img: 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  thumbnailSrc:
+    'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 };

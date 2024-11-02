@@ -1,15 +1,43 @@
-<div class="app-estate-list flex-3-2">
-  <div>
-    <app-estate-list-estate-search />
+<div class="app-estate-list grid-3-2">
+  <div class="estate-list-section">
+    <div class="estate-list flow-spacer-y">
+      <app-estate-list-estate-search />
 
-    <ul>
-      <li>
-        <app-estate-list-item />
-      </li>
-    </ul>
+      <ul class="flow-spacer-y">
+        @for (estate of estateData; track estate.id) {
+        <app-estate-list-item
+          [estateId]="estate.id"
+          [estateThumbnailSrc]="estate.thumbnailSrc"
+          [estateName]="estate.name"
+          [estateAddress]="estate.address"
+          [estatePrice]="estate.price"
+          [estateBedroomQuantity]="estate.bedroomQuantity"
+          [estateBathroomQuantity]="estate.bathroomQuantity"
+        />
+        }
+      </ul>
+    </div>
   </div>
 
-  <div>
-    <app-estate-list-estate-location-map />
+  <div class="estate-location-map-section">
+    <app-estate-location-map />
   </div>
+</div>
+
+<div class="estate-list-pagination-section">
+  <app-pagination>
+    <app-pagination-content>
+      <app-pagination-item>
+        <app-pagination-previous />
+      </app-pagination-item>
+
+      <app-pagination-item>
+        <app-pagination-goto />
+      </app-pagination-item>
+
+      <app-pagination-item>
+        <app-pagination-next />
+      </app-pagination-item>
+    </app-pagination-content>
+  </app-pagination>
 </div>

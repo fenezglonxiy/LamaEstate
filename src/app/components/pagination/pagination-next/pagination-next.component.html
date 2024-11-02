@@ -1,0 +1,13 @@
+<app-button
+  variant="ghost"
+  color="secondary"
+  size="sm"
+  (click)="handleClick()"
+  [disabled]="!$canGotoNext()"
+>
+  Next
+
+  <span>
+    <i class="fa-regular fa-chevron-right fa-xs"></i>
+  </span>
+</app-button>

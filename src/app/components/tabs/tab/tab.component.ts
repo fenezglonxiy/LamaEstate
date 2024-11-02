@@ -13,6 +13,7 @@ export class TabComponent {
   for: string = '';
 
   $active = signal(false);
+
   tabClicked = new EventEmitter<string>();
 
   onButtonClick() {
