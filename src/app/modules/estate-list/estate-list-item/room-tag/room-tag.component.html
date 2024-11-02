@@ -1,14 +1,21 @@
-<div class="icon">
-  <ng-container [ngSwitch]="type">
-    <img src="assets/bed.png" alt="bed icon" *ngSwitchCase="'bedroom'" />
-    <img
-      class="icon"
-      src="assets/bath.png"
-      alt="bath icon"
-      *ngSwitchCase="'bathroom'"
-    />
-  </ng-container>
-</div>
-<app-typography variant="label" fontWeight="bold"
-  >{{ quantity }} {{ type }}</app-typography
->
+<app-chip>
+  <app-chip-icon-content>
+    <app-chip-icon>
+      <div class="icon">
+        <ng-container [ngSwitch]="type">
+          <img src="assets/bed.png" alt="bed icon" *ngSwitchCase="'bedroom'" />
+          <img
+            class="icon"
+            src="assets/bath.png"
+            alt="bath icon"
+            *ngSwitchCase="'bathroom'"
+          />
+        </ng-container>
+      </div>
+    </app-chip-icon>
+  </app-chip-icon-content>
+
+  <app-chip-label-content>
+    <app-chip-label fontWeight="bold">{{ quantity }} {{ type }}</app-chip-label>
+  </app-chip-label-content>
+</app-chip>

@@ -1,11 +1,26 @@
 import { Component, Input } from '@angular/core';
 import { TypographyComponent } from '../../../../components/typography';
 import { CommonModule } from '@angular/common';
+import {
+  ChipComponent,
+  ChipIconComponent,
+  ChipIconContentComponent,
+  ChipLabelComponent,
+  ChipLabelContentComponent,
+} from '../../../../components/chip';
 
 @Component({
   selector: 'app-estate-list-item-room-tag',
   standalone: true,
-  imports: [TypographyComponent, CommonModule],
+  imports: [
+    TypographyComponent,
+    CommonModule,
+    ChipComponent,
+    ChipIconComponent,
+    ChipLabelComponent,
+    ChipIconContentComponent,
+    ChipLabelContentComponent,
+  ],
   templateUrl: './room-tag.component.html',
   styleUrl: './room-tag.component.scss',
 })

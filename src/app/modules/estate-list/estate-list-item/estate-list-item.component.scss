@@ -50,7 +50,9 @@
     align-items: center;
 
     .estate-room-information {
-      --flow-spacing-x: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
     }
 
     .cta {

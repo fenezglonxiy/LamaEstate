@@ -51,7 +51,7 @@ export class TypographyComponent implements OnInit {
     const baseClassName = 'app-typography';
     const variantClassName = `${baseClassName}-${this.variant}`;
 
-    if (this.displayAs === 'span') {
+    if (this.displayAs === 'span' || this.displayAs === 'label') {
       this._display = 'inline';
     }
 

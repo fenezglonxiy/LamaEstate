@@ -10,9 +10,9 @@ import {
   PaginationNextComponent,
   PaginationPreviousComponent,
 } from '../../components/pagination';
-import { EstateListItemComponent } from './estate-list-item/estate-list-item.component';
 import { estateData } from './dummy-data';
 import { EstateLocationMapComponent } from './estate-location-map';
+import { EstateListItemComponent } from './estate-list-item';
 
 @Component({
   selector: 'app-estate-list',
