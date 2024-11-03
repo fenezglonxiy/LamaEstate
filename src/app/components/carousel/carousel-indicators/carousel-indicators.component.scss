@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+}
+
+.app-carousel-indicators {
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    position: relative;
+    font-size: 40px;
+    font-weight: 200;
+    will-change: transform;
+  }
+}
+
+@media (max-width: 900px) {
+  :host {
+    width: 90%;
+  }
+}
