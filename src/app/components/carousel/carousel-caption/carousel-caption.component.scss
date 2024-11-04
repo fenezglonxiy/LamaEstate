@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.app-carousel-title {
+.app-carousel-caption {
   position: relative;
   top: 0;
   width: 100%;
@@ -23,7 +23,7 @@
 }
 
 @media (max-width: 900px) {
-  .app-carousel-title {
+  .app-carousel-caption {
     p {
       font-size: 30px;
     }
