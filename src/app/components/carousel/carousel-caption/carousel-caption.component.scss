@@ -6,6 +6,18 @@
   transform: translate(-50%, -50%);
   width: 100%;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(600px, 50%);
+    height: 60px;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
 }
 
 .app-carousel-caption {
@@ -15,8 +27,20 @@
   height: 64px;
   text-align: center;
   will-change: transform;
+  color: white;
+
+  .caption-wrapper {
+    width: min(600px, 50%);
+    height: 60px;
+    margin: 0 auto;
+  }
 
   p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
     font-size: 50px;
     line-height: 60px;
   }

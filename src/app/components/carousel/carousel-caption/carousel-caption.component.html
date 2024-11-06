@@ -1,5 +1,7 @@
 <div class="app-carousel-caption unhighlightable" #caption>
-  @for (caption of captions; track $index) {
-  <p>{{ caption }}</p>
-  }
+  <div class="caption-wrapper">
+    @for (caption of captions; track $index) {
+    <p>{{ caption }}</p>
+    }
+  </div>
 </div>
