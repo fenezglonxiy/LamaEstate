@@ -147,7 +147,7 @@ export class CarouselService {
   }
 
   gotoItem(index: number) {
-    if (index >= this._content.length) {
+    if (index < 0 || index >= this._content.length) {
       return;
     }
 

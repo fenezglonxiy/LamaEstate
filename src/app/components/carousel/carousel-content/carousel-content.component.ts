@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   HostBinding,
+  HostListener,
   inject,
   Renderer2,
 } from '@angular/core';
@@ -21,6 +22,20 @@ import { AnimateCarouselItemFn } from '../types';
 export class CarouselContentComponent implements AfterContentInit {
   @HostBinding('role')
   private _role = 'list';
+
+  @HostListener('window:keydown.arrowright')
+  private _handleArrowRightDown = () => {
+    this._carouselService.gotoItem(
+      this._carouselService.$currentItem().index + 1
+    );
+  };
+
+  @HostListener('window:keydown.arrowleft')
+  private _handleArrowLeftDown = () => {
+    this._carouselService.gotoItem(
+      this._carouselService.$currentItem().index - 1
+    );
+  };
 
   private _carouselService = inject(CarouselService);
 

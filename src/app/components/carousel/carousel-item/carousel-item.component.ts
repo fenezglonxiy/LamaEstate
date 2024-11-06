@@ -7,6 +7,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { CarouselContentService } from '../carousel-content/carousel-content.service';
+import { replaceEmptyString } from '../../../helpers';
 
 @Component({
   selector: 'app-carousel-item',
@@ -16,7 +17,7 @@ import { CarouselContentService } from '../carousel-content/carousel-content.ser
   styleUrl: './carousel-item.component.scss',
 })
 export class CarouselItemComponent implements OnInit {
-  @Input()
+  @Input({ required: true, transform: fallbackToDefaultCaption })
   caption = '';
 
   @HostBinding('role')
@@ -34,4 +35,8 @@ export class CarouselItemComponent implements OnInit {
       this.caption
     );
   }
+}
+
+function fallbackToDefaultCaption(value: string) {
+  return replaceEmptyString(value, 'No Caption');
 }
