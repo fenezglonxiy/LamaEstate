@@ -1,10 +1,12 @@
 import {
   Component,
+  ElementRef,
   HostBinding,
   inject,
   Input,
   OnInit,
-  ViewContainerRef,
+  Renderer2,
+  RendererStyleFlags2,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -43,7 +45,9 @@ export class TypographyComponent implements OnInit {
   @HostBinding('style.display')
   private _display = 'block';
 
-  private _vcr = inject(ViewContainerRef);
+  private _elementRef = inject(ElementRef);
+
+  private _renderer = inject(Renderer2);
 
   className = '';
 
@@ -59,9 +63,11 @@ export class TypographyComponent implements OnInit {
 
     if (this.ellipsisLineClamp > 0) {
       textOverflowClassName = `${baseClassName}-overflow-line`;
-      this._vcr.element.nativeElement.style.setProperty(
+      this._renderer.setStyle(
+        this._elementRef.nativeElement,
         '--line-clamp',
-        this.ellipsisLineClamp
+        `${this.ellipsisLineClamp}`,
+        RendererStyleFlags2.DashCase
       );
     }
 
