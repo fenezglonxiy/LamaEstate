@@ -8,6 +8,7 @@ import {
   OnDestroy,
   QueryList,
   Renderer2,
+  RendererStyleFlags2,
 } from '@angular/core';
 import { replaceNonPositiveNumber } from '../../helpers';
 import { MasonryItemComponent } from './masonry-item/masonry-item.component';
@@ -26,6 +27,12 @@ export class MasonryComponent implements AfterContentInit, OnDestroy {
 
   @Input()
   spacing = 1;
+
+  private readonly _perSpacingInPixel = 4;
+
+  public get spacingInPixel() {
+    return this.spacing * this._perSpacingInPixel;
+  }
 
   @ContentChildren(MasonryItemComponent)
   private _items: QueryList<MasonryItemComponent> | undefined;
@@ -64,13 +71,13 @@ export class MasonryComponent implements AfterContentInit, OnDestroy {
     this._renderer.setStyle(
       this._elementRef.nativeElement,
       'height',
-      `calc(${maxColumnBaseHeight + 2 * this.spacing * 4}px`
+      `calc(${maxColumnBaseHeight + 2 * this.spacingInPixel}px`
     );
 
     this._renderer.setStyle(
       this._elementRef.nativeElement,
       'margin',
-      `calc(-${this.spacing} * 4px)`
+      `calc(-${this.spacingInPixel}px)`
     );
 
     this._setupObserver();
@@ -154,20 +161,26 @@ export class MasonryComponent implements AfterContentInit, OnDestroy {
       pq.add(i);
     }
 
-    const itemMarginBlock = 2 * this.spacing * 4;
+    const itemMarginBlock = 2 * this.spacingInPixel;
 
-    const itemMarginStyle = `calc(${this.spacing} * 4px)`;
+    const itemMarginStyle = `${this.spacingInPixel}px`;
 
     const itemWidthStyle = `calc(100% / ${this.columns} - 2 * ${itemMarginStyle})`;
 
     for (let i = 0; i < this._items.length; i++) {
       const item = this._items.get(i) as NonNullable<MasonryItemComponent>;
       const columnIndex = pq.poll() as number;
-      const order = columnIndex + 1;
+      const order = item.order === undefined ? columnIndex + 1 : item.order;
       const itemElement = item.elementRef.nativeElement;
       this._itemBaseHeights.push(itemElement.clientHeight);
       this._renderer.setAttribute(itemElement, 'data-index', `${i}`);
       this._renderer.setAttribute(itemElement, 'data-order', `${order}`);
+      this._renderer.setStyle(
+        itemElement,
+        '--margin',
+        itemMarginStyle,
+        RendererStyleFlags2.DashCase
+      );
       this._renderer.setStyle(itemElement, 'margin', itemMarginStyle);
       this._renderer.setStyle(itemElement, 'width', itemWidthStyle);
       this._renderer.setStyle(itemElement, 'order', `${order}`);
