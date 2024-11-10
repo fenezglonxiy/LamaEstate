@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PriceTagComponent } from './price-tag.component';
+import { EstateAddressComponent } from './estate-address.component';
 
-describe('PriceTagComponent', () => {
-  let component: PriceTagComponent;
-  let fixture: ComponentFixture<PriceTagComponent>;
+describe('EstateAddressComponent', () => {
+  let component: EstateAddressComponent;
+  let fixture: ComponentFixture<EstateAddressComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PriceTagComponent]
+      imports: [EstateAddressComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(PriceTagComponent);
+
+    fixture = TestBed.createComponent(EstateAddressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

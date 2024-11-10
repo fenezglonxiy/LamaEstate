@@ -15,14 +15,9 @@
     >
   </app-link>
 
-  <div class="estate-address">
-    <div class="icon">
-      <img src="assets/pin.png" alt="pin icon" />
-    </div>
-    <app-typography variant="label">{{ estateAddress }}</app-typography>
-  </div>
+  <app-estate-address [address]="estateAddress" />
 
-  <app-estate-list-item-price-tag [price]="estatePrice" />
+  <app-estate-price-tag [price]="estatePrice" />
 
   <div class="estate-room-information-and-cta">
     <div class="estate-room-information">
