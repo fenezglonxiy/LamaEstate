@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { TypographyComponent } from '../../../components/typography';
 
 @Component({
@@ -8,7 +8,4 @@ import { TypographyComponent } from '../../../components/typography';
   templateUrl: './estate-address.component.html',
   styleUrl: './estate-address.component.scss',
 })
-export class EstateAddressComponent {
-  @Input({ required: true })
-  address = '';
-}
+export class EstateAddressComponent {}

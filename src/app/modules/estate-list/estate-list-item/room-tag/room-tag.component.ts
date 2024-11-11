@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { TypographyComponent } from '../../../../components/typography';
 import { CommonModule } from '@angular/common';
 import {
   ChipComponent,
@@ -13,7 +12,6 @@ import {
   selector: 'app-estate-list-item-room-tag',
   standalone: true,
   imports: [
-    TypographyComponent,
     CommonModule,
     ChipComponent,
     ChipIconComponent,

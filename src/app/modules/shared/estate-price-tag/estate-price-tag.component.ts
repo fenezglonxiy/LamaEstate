@@ -17,7 +17,7 @@ export class EstatePriceTagComponent {
   currency: 'dollar' = 'dollar';
 
   @Input()
-  price: number | undefined;
+  estatePrice: number | undefined;
 
   currencySymbol = '$';
 }

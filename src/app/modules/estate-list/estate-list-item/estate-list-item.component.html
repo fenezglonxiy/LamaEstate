@@ -7,7 +7,7 @@
 <div class="estate-description">
   <app-link class="estate-name" [href]="href">
     <app-typography
-      variant="h4"
+      variant="xl"
       fontWeight="bold"
       displayAs="h4"
       [ellipsisLineClamp]="2"
@@ -15,9 +15,11 @@
     >
   </app-link>
 
-  <app-estate-address [address]="estateAddress" />
+  <app-estate-address>
+    {{ estateAddress }}
+  </app-estate-address>
 
-  <app-estate-price-tag [price]="estatePrice" />
+  <app-estate-price-tag [estatePrice]="estatePrice" />
 
   <div class="estate-room-information-and-cta">
     <div class="estate-room-information">
