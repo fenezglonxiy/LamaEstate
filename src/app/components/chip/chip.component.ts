@@ -1,12 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component, HostBinding, inject, Input, OnInit } from '@angular/core';
-import { TypographyComponent } from '../typography/typography.component';
 import { ChipService } from './chip.service';
 
 @Component({
   selector: 'app-chip',
   standalone: true,
-  imports: [CommonModule, TypographyComponent],
+  imports: [],
   templateUrl: './chip.component.html',
   styleUrl: './chip.component.scss',
   providers: [ChipService],
@@ -17,6 +15,9 @@ export class ChipComponent implements OnInit {
 
   @Input()
   orientation: 'vertical' | 'horizontal' = 'horizontal';
+
+  @Input()
+  size: 'base' | 'large' = 'base';
 
   @HostBinding('class')
   class = '';
@@ -36,6 +37,12 @@ export class ChipComponent implements OnInit {
 
   ngOnInit(): void {
     const baseClassName = 'app-chip';
-    this.class = `${baseClassName}-${this.variant} ${baseClassName}-${this.orientation}`;
+    let sizeClassName = `${baseClassName}-base`;
+
+    if (this.size !== 'base') {
+      sizeClassName = `${baseClassName}-${this.orientation}-${this.size}`;
+    }
+
+    this.class = `${baseClassName}-${this.variant} ${baseClassName}-${this.orientation} ${sizeClassName}`;
   }
 }

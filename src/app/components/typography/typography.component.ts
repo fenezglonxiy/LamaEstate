@@ -25,7 +25,20 @@ export class TypographyComponent implements OnInit {
   @HostBinding('for') @Input() for = '';
 
   @Input()
-  variant: 'body' | 'label' | 'h1' | 'h2' | 'h3' | 'h4' = 'body';
+  variant:
+    | 'xs'
+    | 'sm'
+    | 'base'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | '4xl'
+    | '5xl'
+    | '6xl'
+    | '7xl'
+    | '8xl'
+    | '9xl' = 'base';
 
   @Input()
   fontWeight:
@@ -37,7 +50,8 @@ export class TypographyComponent implements OnInit {
     | 'semibold'
     | 'bold'
     | 'extrabold'
-    | 'black' = 'normal';
+    | 'black'
+    | undefined;
 
   @Input()
   ellipsisLineClamp = 0;
@@ -71,7 +85,11 @@ export class TypographyComponent implements OnInit {
       );
     }
 
-    const fontWeightClassName = `${baseClassName}-${this.fontWeight}`;
+    let fontWeightClassName = '';
+
+    if (this.fontWeight) {
+      fontWeightClassName = `${baseClassName}-${this.fontWeight}`;
+    }
 
     this.className = `${variantClassName} ${textOverflowClassName} ${fontWeightClassName}`;
   }
