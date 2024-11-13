@@ -6,21 +6,20 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
 
-  &.sm {
+  &-sm {
     min-width: 48px;
     height: 40px;
     padding: 0.5rem 1rem;
   }
 
-  &.base {
+  &-base {
     min-width: 72px;
     height: 48px;
     padding: 0.75rem 1.5rem;
   }
 
-  &.icon {
+  &-icon {
     width: 24px;
     height: 24px;
 
@@ -35,7 +34,7 @@
     }
   }
 
-  &.contained {
+  &-contained {
     background-color: var(--button-contained-color);
 
     &-primary {
@@ -43,7 +42,7 @@
     }
   }
 
-  &.outlined {
+  &-outlined {
     border: 1px solid var(--button-outlined-color);
     border-radius: 4px;
 
@@ -61,7 +60,7 @@
     }
   }
 
-  &.ghost {
+  &-ghost {
     border-radius: 4px;
 
     &:hover,
@@ -78,17 +77,17 @@
     }
   }
 
-  &.text {
+  &-text {
     &:hover {
       background-color: var(--button-text-color, transparent);
     }
   }
 
-  &.w-full {
+  &-w-full {
     width: 100%;
   }
 
-  &.h-full {
+  &-h-full {
     height: 100%;
   }
 }

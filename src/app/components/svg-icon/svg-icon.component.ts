@@ -24,7 +24,7 @@ export class SvgIconComponent implements OnInit {
   @Input()
   size: 'sm' | 'base' = 'base';
 
-  private readonly _sizeMapping = {
+  private readonly _pxValueBySize = {
     sm: 16,
     base: 24,
   } as const;
@@ -58,7 +58,7 @@ export class SvgIconComponent implements OnInit {
     this.titleId = `${id}-svg-title`;
     this.descId = `${id}-svg-desc`;
 
-    const sizeInPx = this._sizeMapping[this.size];
+    const sizeInPx = this._pxValueBySize[this.size];
     this.width = `${sizeInPx}`;
     this.height = `${sizeInPx}`;
     this.viewBox = `0 0 ${this.width} ${this.height}`;

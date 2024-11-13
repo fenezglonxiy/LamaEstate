@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { spacingInPx } from '../../helpers';
 
 @Component({
   selector: 'app-button',
@@ -18,6 +19,13 @@ export class ButtonComponent implements OnInit {
   size: 'sm' | 'base' | 'icon' | 'icon-md' | 'icon-lg' | 'auto' | undefined;
 
   @Input()
+  spacing = 2;
+
+  public get spacingInPx() {
+    return spacingInPx(this.spacing);
+  }
+
+  @Input()
   wFull = false;
 
   @Input()
@@ -31,36 +39,41 @@ export class ButtonComponent implements OnInit {
 
   className = '';
 
+  gapStyle = '';
+
   ngOnInit(): void {
+    const baseName = 'app-button';
     let variantClassName = '';
     let colorClassName = '';
 
     if (this.variant !== undefined) {
-      variantClassName = this.variant;
+      variantClassName = `${baseName}-${this.variant}`;
 
       if (this.color !== undefined) {
-        colorClassName = `${this.variant}-${this.color}`;
+        colorClassName = `${baseName}-${this.variant}-${this.color}`;
       }
     }
 
     let sizeClassName = '';
 
     if (this.size !== undefined) {
-      sizeClassName = this.size;
+      sizeClassName = `${baseName}-${this.size}`;
     }
 
     let wFullClassName = '';
 
     if (this.wFull) {
-      wFullClassName = 'w-full';
+      wFullClassName = `${baseName}-w-full`;
     }
 
     let hFullClassName = '';
 
     if (this.hFull) {
-      hFullClassName = 'h-full';
+      hFullClassName = `${baseName}-h-full`;
     }
 
-    this.className = `app-button ${variantClassName} ${colorClassName} ${sizeClassName} ${wFullClassName} ${hFullClassName}`;
+    this.className = `${baseName} ${variantClassName} ${colorClassName} ${sizeClassName} ${wFullClassName} ${hFullClassName}`;
+
+    this.gapStyle = `${this.spacingInPx}px`;
   }
 }
