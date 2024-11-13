@@ -5,7 +5,9 @@
     [longitude]="marker.longitude"
     [options]="marker.options"
   >
+    @if (!popupsDisabled) {
     <app-map-popup [options]="popups[i].options" />
+    }
   </app-map-marker>
   }
 </app-map>

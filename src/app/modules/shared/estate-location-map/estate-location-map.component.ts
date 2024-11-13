@@ -34,6 +34,9 @@ export class EstateLocationMapComponent implements OnInit {
   @Input({ required: true })
   centerLongitude = 0;
 
+  @Input()
+  popupsDisabled = false;
+
   map!: {
     options: MapOptions;
   };
@@ -91,19 +94,21 @@ export class EstateLocationMapComponent implements OnInit {
       },
     }));
 
-    this.popups = this.locations.map((item) => ({
-      options: {
-        content: this._estateLocationMapPopupService.createPopup(
-          item.estateId,
-          item.estateThumbnailSrc,
-          '',
-          item.estateName,
-          item.estatePrice,
-          item.estateBedroomQuantity
-        ),
-        offset: this._popupOffset,
-        minWidth: this._popupMinWidth,
-      },
-    }));
+    if (!this.popupsDisabled) {
+      this.popups = this.locations.map((item) => ({
+        options: {
+          content: this._estateLocationMapPopupService.createPopup(
+            item.estateId,
+            item.estateThumbnailSrc,
+            '',
+            item.estateName,
+            item.estatePrice,
+            item.estateBedroomQuantity
+          ),
+          offset: this._popupOffset,
+          minWidth: this._popupMinWidth,
+        },
+      }));
+    }
   }
 }

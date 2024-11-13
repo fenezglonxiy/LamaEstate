@@ -20,7 +20,11 @@
   </div>
 
   <div class="estate-location-map-section">
-    <app-estate-location-map />
+    <app-estate-location-map
+      [locations]="mapLocations"
+      [centerLatitude]="mapCenter.latitude"
+      [centerLongitude]="mapCenter.longitude"
+    />
   </div>
 </div>
 

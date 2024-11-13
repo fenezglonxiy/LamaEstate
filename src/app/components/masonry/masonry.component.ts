@@ -10,7 +10,7 @@ import {
   Renderer2,
   RendererStyleFlags2,
 } from '@angular/core';
-import { replaceNonPositiveNumber } from '../../helpers';
+import { replaceNonPositiveNumber, spacingInPx } from '../../helpers';
 import { MasonryItemComponent } from './masonry-item/masonry-item.component';
 import { PriorityQueue } from '../../../types';
 
@@ -28,10 +28,8 @@ export class MasonryComponent implements AfterContentInit, OnDestroy {
   @Input()
   spacing = 1;
 
-  private readonly _perSpacingInPixel = 4;
-
-  public get spacingInPixel() {
-    return this.spacing * this._perSpacingInPixel;
+  public get spacingInPx() {
+    return spacingInPx(this.spacing);
   }
 
   @ContentChildren(MasonryItemComponent)
@@ -71,13 +69,13 @@ export class MasonryComponent implements AfterContentInit, OnDestroy {
     this._renderer.setStyle(
       this._elementRef.nativeElement,
       'height',
-      `calc(${maxColumnBaseHeight + 2 * this.spacingInPixel}px`
+      `calc(${maxColumnBaseHeight + 2 * this.spacingInPx}px`
     );
 
     this._renderer.setStyle(
       this._elementRef.nativeElement,
       'margin',
-      `calc(-${this.spacingInPixel}px)`
+      `calc(-${this.spacingInPx}px)`
     );
 
     this._setupObserver();
@@ -161,9 +159,9 @@ export class MasonryComponent implements AfterContentInit, OnDestroy {
       pq.add(i);
     }
 
-    const itemMarginBlock = 2 * this.spacingInPixel;
+    const itemMarginBlock = 2 * this.spacingInPx;
 
-    const itemMarginStyle = `${this.spacingInPixel}px`;
+    const itemMarginStyle = `${this.spacingInPx}px`;
 
     const itemWidthStyle = `calc(100% / ${this.columns} - 2 * ${itemMarginStyle})`;
 

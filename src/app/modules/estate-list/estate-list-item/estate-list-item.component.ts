@@ -24,7 +24,7 @@ import { EstateAddressComponent } from '../../shared/estate-address';
 })
 export class EstateListItemComponent implements OnInit {
   @Input({ required: true })
-  estateId = 0;
+  estateId = '';
 
   @Input({ required: true })
   estateThumbnailSrc = '';
