@@ -2,6 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import {
   icon,
   latLng,
+  MapOptions,
   MarkerOptions,
   Point,
   PopupOptions,
@@ -27,31 +28,19 @@ export class EstateLocationMapComponent implements OnInit {
   @Input({ required: true })
   locations: Array<EstateLocation> = [];
 
+  @Input({ required: true })
+  centerLatitude = 0;
+
+  @Input({ required: true })
+  centerLongitude = 0;
+
+  map!: {
+    options: MapOptions;
+  };
+
   private readonly _markerIconUrl = 'assets/marker-icon.png';
   private readonly _markerIconRetinaUrl = 'assets/marker-icon-2x.png';
   private readonly _markerShadowUrl = 'assets/marker-shadow.png';
-
-  private _estateLocationMapPopupService = inject(
-    EstateLocationMapPopupService
-  );
-
-  map = {
-    options: {
-      layers: [
-        tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 18,
-          attribution: '...',
-        }),
-      ],
-      scrollWheelZoom: false,
-      zoom: 12,
-      center: latLng(53.4084, -2.9916),
-    },
-  };
-
-  private readonly _popupOffset = new Point(0, -30);
-
-  private readonly _popupMinWidth = 200;
 
   markers: Array<{
     id: string;
@@ -60,11 +49,33 @@ export class EstateLocationMapComponent implements OnInit {
     options: MarkerOptions;
   }> = [];
 
+  private _estateLocationMapPopupService = inject(
+    EstateLocationMapPopupService
+  );
+
+  private readonly _popupOffset = new Point(0, -30);
+
+  private readonly _popupMinWidth = 200;
+
   popups: Array<{
     options: PopupOptions;
   }> = [];
 
   ngOnInit(): void {
+    this.map = {
+      options: {
+        layers: [
+          tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '...',
+          }),
+        ],
+        scrollWheelZoom: false,
+        zoom: 12,
+        center: latLng(this.centerLatitude, this.centerLongitude),
+      },
+    };
+
     this.markers = this.locations.map((item) => ({
       id: item.estateId,
       latitude: item.latitude,
