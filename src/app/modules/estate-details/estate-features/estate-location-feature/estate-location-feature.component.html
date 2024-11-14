@@ -1,0 +1,9 @@
+<app-estate-feature featureName="Location">
+  <app-estate-location-map
+    class="estate-details-location-map"
+    [locations]="location"
+    [centerLatitude]="location[0].latitude"
+    [centerLongitude]="location[0].longitude"
+    [popupsDisabled]="true"
+  />
+</app-estate-feature>

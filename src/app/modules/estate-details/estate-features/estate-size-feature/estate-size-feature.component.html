@@ -1,0 +1,19 @@
+<app-estate-feature featureName="Size">
+  <div role="list" class="estate-size-feature-list">
+    @for (item of items; track $index) {
+    <app-chip
+      role="listitem"
+      class="estate-size-feature-list-item"
+      [spacing]="2.5"
+    >
+      <app-chip-icon-content>
+        <app-svg-icon [svgSpriteHref]="item.iconSrc" [title]="item.iconTitle" />
+      </app-chip-icon-content>
+
+      <app-chip-label-content>
+        <app-chip-label variant="sm">{{ item.label }}</app-chip-label>
+      </app-chip-label-content>
+    </app-chip>
+    }
+  </div>
+</app-estate-feature>

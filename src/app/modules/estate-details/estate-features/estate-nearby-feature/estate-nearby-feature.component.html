@@ -1,0 +1,24 @@
+<app-estate-feature featureName="Nearby">
+  <div role="list" class="estate-nearby-feature-list">
+    @for (item of items; track $index) {
+    <app-chip
+      role="listitem"
+      class="estate-nearby-feature-list-item"
+      [spacing]="2.5"
+    >
+      <app-chip-icon-content>
+        <app-svg-icon [svgSpriteHref]="item.iconSrc" [title]="item.iconTitle" />
+      </app-chip-icon-content>
+
+      <app-chip-label-content>
+        <app-chip-label fontWeight="bold">
+          {{ item.label }}
+        </app-chip-label>
+        <app-chip-description variant="sm">
+          {{ item.description }}
+        </app-chip-description>
+      </app-chip-label-content>
+    </app-chip>
+    }
+  </div>
+</app-estate-feature>
