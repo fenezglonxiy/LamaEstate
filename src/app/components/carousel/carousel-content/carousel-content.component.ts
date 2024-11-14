@@ -23,18 +23,23 @@ export class CarouselContentComponent implements AfterContentInit {
   @HostBinding('role')
   private _role = 'list';
 
-  @HostListener('window:keydown.arrowright')
-  private _handleArrowRightDown = () => {
+  @HostListener('document:keydown.arrowright')
+  private _handleKeyArrowRightDown = () => {
     this._carouselService.gotoItem(
       this._carouselService.$currentItem().index + 1
     );
   };
 
-  @HostListener('window:keydown.arrowleft')
-  private _handleArrowLeftDown = () => {
+  @HostListener('document:keydown.arrowleft')
+  private _handleKeyArrowLeftDown = () => {
     this._carouselService.gotoItem(
       this._carouselService.$currentItem().index - 1
     );
+  };
+
+  @HostListener('document:keydown.esc')
+  private _handleKeyEscDown = () => {
+    this._carouselService.emitCloseEvent();
   };
 
   private _carouselService = inject(CarouselService);

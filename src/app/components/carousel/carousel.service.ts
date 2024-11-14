@@ -23,6 +23,8 @@ export class CarouselService {
     caption: '',
   });
 
+  emitCloseEvent!: () => void;
+
   private previousItemIndex = -1;
 
   private _gsap: GSAP;
