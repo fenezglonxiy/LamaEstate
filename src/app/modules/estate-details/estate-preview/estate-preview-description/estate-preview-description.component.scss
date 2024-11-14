@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.estate-preview-description-header {
+  display: flex;
+  justify-content: space-between;
+
+  .flow-spacer-y {
+    --flow-spacing-y: 1.25rem;
+  }
+}
+
+.estate-preview-description-body {
+  margin-top: 2rem;
+  color: #555;
+}

@@ -1,0 +1,22 @@
+:host {
+  display: block;
+
+  & .showcase-column:first-of-type {
+    width: calc(75% - 2 * var(--margin)) !important;
+  }
+
+  & .showcase-column:last-of-type {
+    width: calc(25% - 2 * var(--margin)) !important;
+  }
+}
+
+.showcase-item {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}

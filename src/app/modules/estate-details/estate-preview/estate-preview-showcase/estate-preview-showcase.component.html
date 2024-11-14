@@ -1,0 +1,74 @@
+<app-masonry [columns]="2" [spacing]="2.5">
+  <app-masonry-item class="showcase-column">
+    <app-masonry [columns]="1" [spacing]="2.5">
+      <app-masonry-item
+        class="showcase-item"
+        role="button"
+        [style.height]="'350px'"
+        (click)="openCarousel()"
+      >
+        <img src="assets/img-1.jpg" alt="" />
+      </app-masonry-item>
+    </app-masonry>
+  </app-masonry-item>
+
+  <app-masonry-item class="showcase-column">
+    <app-masonry [columns]="1" [spacing]="2.5">
+      <app-masonry-item
+        class="showcase-item"
+        role="button"
+        [style.height]="'103.33px'"
+      >
+        <img src="assets/img-2.jpg" alt="" />
+      </app-masonry-item>
+      <app-masonry-item
+        class="showcase-item"
+        role="button"
+        [style.height]="'103.33px'"
+      >
+        <img src="assets/img-3.jpg" alt="" />
+      </app-masonry-item>
+      <app-masonry-item
+        class="showcase-item"
+        role="button"
+        [style.height]="'103.33px'"
+      >
+        <img src="assets/img-4.jpg" alt="" />
+      </app-masonry-item>
+    </app-masonry>
+  </app-masonry-item>
+</app-masonry>
+
+<ng-template #tmplCarousel>
+  <app-carousel (close)="closeCarousel()">
+    <app-carousel-content>
+      <app-carousel-item caption="">
+        <app-carousel-image src="assets/img-1.jpg" />
+      </app-carousel-item>
+      <app-carousel-item caption="">
+        <app-carousel-image src="assets/img-2.jpg" />
+      </app-carousel-item>
+      <app-carousel-item caption="">
+        <app-carousel-image src="assets/img-3.jpg" />
+      </app-carousel-item>
+      <app-carousel-item caption="">
+        <app-carousel-image src="assets/img-4.jpg" />
+      </app-carousel-item>
+    </app-carousel-content>
+    <app-carousel-counter />
+    <app-carousel-preview>
+      <app-carousel-preview-item>
+        <app-carousel-preview-image src="assets/img-1.jpg" />
+      </app-carousel-preview-item>
+      <app-carousel-preview-item>
+        <app-carousel-preview-image src="assets/img-2.jpg" />
+      </app-carousel-preview-item>
+      <app-carousel-preview-item>
+        <app-carousel-preview-image src="assets/img-3.jpg" />
+      </app-carousel-preview-item>
+      <app-carousel-preview-item>
+        <app-carousel-preview-image src="assets/img-4.jpg" />
+      </app-carousel-preview-item>
+    </app-carousel-preview>
+  </app-carousel>
+</ng-template>
