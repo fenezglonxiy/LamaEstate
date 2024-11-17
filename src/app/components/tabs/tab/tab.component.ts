@@ -15,7 +15,8 @@ import {
   templateUrl: './tab.component.html',
   styleUrl: './tab.component.scss',
 })
-export class TabComponent implements OnInit {
+export class TabComponent {
+  @HostBinding('attr.aria-controls')
   @Input({ required: true })
   for: string = '';
 
@@ -27,14 +28,7 @@ export class TabComponent implements OnInit {
   @HostBinding('attr.aria-selected')
   private _ariaSelected = this.$active();
 
-  @HostBinding('attr.aria-controls')
-  private _ariaControls = '';
-
   tabClicked = new EventEmitter<string>();
-
-  ngOnInit(): void {
-    this._ariaControls = this.for;
-  }
 
   onButtonClick() {
     this.tabClicked.emit(this.for);

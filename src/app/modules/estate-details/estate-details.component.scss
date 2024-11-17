@@ -1,0 +1,33 @@
+@use "../../mixins/responsive.scss" as *;
+
+:host {
+  display: block;
+}
+
+.app-estate-details {
+  align-items: flex-start;
+  --flow-spacing-y: 0;
+}
+
+.estate-preview-section {
+  padding-right: 3.125rem;
+}
+
+.estate-features-section {
+  padding: 0 1.25rem;
+}
+
+@include md {
+  .app-estate-details {
+    grid-template-columns: 1fr;
+    --flow-spacing-y: 2rem;
+  }
+
+  .estate-preview-section {
+    padding-right: 0;
+  }
+
+  .estate-features-section {
+    padding: 0;
+  }
+}

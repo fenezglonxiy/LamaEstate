@@ -57,7 +57,7 @@ export class TypographyComponent implements OnInit {
   ellipsisLineClamp = 0;
 
   @HostBinding('style.display')
-  private _display = 'block';
+  private _styleDisplay = 'block';
 
   private _elementRef = inject(ElementRef);
 
@@ -70,7 +70,7 @@ export class TypographyComponent implements OnInit {
     const variantClassName = `${baseClassName}-${this.variant}`;
 
     if (this.displayAs === 'span' || this.displayAs === 'label') {
-      this._display = 'inline';
+      this._styleDisplay = 'inline';
     }
 
     let textOverflowClassName = '';

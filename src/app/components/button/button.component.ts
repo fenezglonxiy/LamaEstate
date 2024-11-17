@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { spacingInPx } from '../../helpers';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { generateClassName, spacingInPx } from '../../helpers';
 
 @Component({
   selector: 'app-button',
@@ -13,7 +13,7 @@ export class ButtonComponent implements OnInit {
   variant: 'contained' | 'outlined' | 'ghost' | 'text' | undefined;
 
   @Input()
-  color: 'primary' | 'secondary' = 'primary';
+  color: 'primary' | 'secondary' | undefined;
 
   @Input()
   size: 'sm' | 'base' | 'icon' | 'icon-md' | 'icon-lg' | 'auto' | undefined;
@@ -34,6 +34,7 @@ export class ButtonComponent implements OnInit {
   @Input()
   type: 'submit' | 'button' = 'button';
 
+  @HostBinding('attr.aria-disabled')
   @Input()
   disabled = false;
 
@@ -47,32 +48,38 @@ export class ButtonComponent implements OnInit {
     let colorClassName = '';
 
     if (this.variant !== undefined) {
-      variantClassName = `${baseName}-${this.variant}`;
+      variantClassName = `${this.variant}`;
 
       if (this.color !== undefined) {
-        colorClassName = `${baseName}-${this.variant}-${this.color}`;
+        colorClassName = `${this.variant}-${this.color}`;
       }
     }
 
     let sizeClassName = '';
 
     if (this.size !== undefined) {
-      sizeClassName = `${baseName}-${this.size}`;
+      sizeClassName = `${this.size}`;
     }
 
     let wFullClassName = '';
 
     if (this.wFull) {
-      wFullClassName = `${baseName}-w-full`;
+      wFullClassName = 'w-full';
     }
 
     let hFullClassName = '';
 
     if (this.hFull) {
-      hFullClassName = `${baseName}-h-full`;
+      hFullClassName = 'h-full';
     }
 
-    this.className = `${baseName} ${variantClassName} ${colorClassName} ${sizeClassName} ${wFullClassName} ${hFullClassName}`;
+    this.className = generateClassName(baseName, [
+      variantClassName,
+      colorClassName,
+      sizeClassName,
+      wFullClassName,
+      hFullClassName,
+    ]);
 
     this.gapStyle = `${this.spacingInPx}px`;
   }
