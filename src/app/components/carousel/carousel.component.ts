@@ -1,4 +1,11 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import {
+  Component,
+  effect,
+  EventEmitter,
+  inject,
+  input,
+  Output,
+} from '@angular/core';
 import { CarouselService } from './carousel.service';
 
 @Component({
@@ -10,12 +17,26 @@ import { CarouselService } from './carousel.service';
   providers: [CarouselService],
 })
 export class CarouselComponent {
-  private _carouselService = inject(CarouselService);
+  item = input(0);
 
   @Output()
   close = new EventEmitter<void>();
 
+  private _carouselService = inject(CarouselService);
+
   constructor() {
-    this._carouselService.emitCloseEvent = this.close.emit.bind(this);
+    const emitCloseEvent = () => {
+      this.close.emit();
+    };
+
+    this._carouselService.emitCloseEvent = emitCloseEvent.bind(this);
+
+    effect(
+      () => {
+        const index = this.item();
+        this._carouselService.gotoItem(index);
+      },
+      { allowSignalWrites: true }
+    );
   }
 }

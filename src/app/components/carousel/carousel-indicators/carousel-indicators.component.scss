@@ -10,13 +10,7 @@
 .app-carousel-indicators {
   display: flex;
   justify-content: space-between;
-
-  p {
-    position: relative;
-    font-size: 40px;
-    font-weight: 200;
-    will-change: transform;
-  }
+  color: white;
 }
 
 @media (max-width: 900px) {

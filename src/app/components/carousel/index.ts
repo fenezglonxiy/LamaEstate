@@ -1,4 +1,5 @@
 export { CarouselCaptionComponent } from './carousel-caption/carousel-caption.component';
+export { CarouselCloseComponent } from './carousel-close/carousel-close.component';
 export { CarouselContentComponent } from './carousel-content/carousel-content.component';
 export { CarouselCounterComponent } from './carousel-counter/carousel-counter.component';
 export { CarouselImageComponent } from './carousel-image/carousel-image.component';

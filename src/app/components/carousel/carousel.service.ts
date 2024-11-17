@@ -12,6 +12,12 @@ import CustomEase from 'gsap/CustomEase';
 export class CarouselService {
   $currentItem = computed<CarouselItemMetadata>(() => this._$currentItem());
 
+  $canGotoPrevious = computed<boolean>(() => this._$currentItem().index > 0);
+
+  $canGotoNext = computed<boolean>(
+    () => this._$currentItem().index < this._content.length - 1
+  );
+
   public get content() {
     return this._content;
   }
