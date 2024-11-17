@@ -14,7 +14,7 @@ export class ChipLabelComponent {
   readonly id;
 
   @Input()
-  variant: TypographyComponent['variant'] = 'body';
+  variant: TypographyComponent['variant'] = 'base';
 
   @Input()
   fontWeight: TypographyComponent['fontWeight'] = 'normal';

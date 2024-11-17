@@ -1,0 +1,24 @@
+<svg
+  [id]="id"
+  [attr.width]="width"
+  [attr.height]="height"
+  [attr.viewBox]="viewBox"
+  [attr.aria-labelledby]="titleId"
+  [attr.aria-describedby]="descId"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  @if (title !== '') {
+  <title [id]="titleId">
+    {{ title }}
+  </title>
+  }
+
+  <use [attr.xlink:href]="svgSpriteHref" [attr.href]="svgSpriteHref" />
+
+  @if (description !== '') {
+  <desc [id]="descId">
+    {{ description }}
+  </desc>
+  }
+</svg>

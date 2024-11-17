@@ -1,0 +1,19 @@
+<div class="app-carousel-indicators">
+  <app-button
+    variant="contained"
+    size="icon-md"
+    (click)="handlePreviousIndicatorClick()"
+    [disabled]="!$canGotoPrevious()"
+  >
+    <i class="fa-solid fa-chevron-left fa-lg"></i>
+  </app-button>
+
+  <app-button
+    variant="contained"
+    size="icon-md"
+    (click)="handleNextIndicatorClick()"
+    [disabled]="!$canGotoNext()"
+  >
+    <i class="fa-solid fa-chevron-right fa-lg"></i>
+  </app-button>
+</div>

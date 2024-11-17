@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.estate-size-feature-list {
+  display: flex;
+  justify-content: space-between;
+  --chip-color: white;
+
+  &-item {
+    padding: 0.625rem;
+  }
+}

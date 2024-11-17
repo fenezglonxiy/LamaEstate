@@ -21,6 +21,7 @@
     "@angular/router": "^18.2.9",
     "@bluehalo/ngx-leaflet": "^18.0.2",
     "@types/uuid": "^10.0.0",
+    "gsap": "^3.12.5",
     "leaflet": "^1.9.4",
     "leaflet-responsive-popup": "^1.0.0",
     "rxjs": "~7.8.0",

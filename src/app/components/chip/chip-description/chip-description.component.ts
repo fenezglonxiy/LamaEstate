@@ -11,7 +11,7 @@ import { ChipService } from '../chip.service';
 })
 export class ChipDescriptionComponent {
   @Input()
-  variant: TypographyComponent['variant'] = 'body';
+  variant: TypographyComponent['variant'] = 'base';
 
   @Input()
   fontWeight: TypographyComponent['fontWeight'] = 'normal';

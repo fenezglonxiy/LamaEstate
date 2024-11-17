@@ -1,0 +1,11 @@
+<div class="app-carousel-counter unhighlightable">
+  <div class="counter" #counter>
+    @for (count of counts; track $index) {
+    <p>{{ count }}</p>
+    }
+  </div>
+  <div><p>&mdash;</p></div>
+  <div>
+    <p class="unhighlightable">{{ maxCount }}</p>
+  </div>
+</div>

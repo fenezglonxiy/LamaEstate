@@ -1,5 +1,12 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, signal } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  signal,
+} from '@angular/core';
 
 @Component({
   selector: 'app-tab',
@@ -9,10 +16,17 @@ import { Component, EventEmitter, Input, signal } from '@angular/core';
   styleUrl: './tab.component.scss',
 })
 export class TabComponent {
+  @HostBinding('attr.aria-controls')
   @Input({ required: true })
   for: string = '';
 
   $active = signal(false);
+
+  @HostBinding('role')
+  private _role = 'tab';
+
+  @HostBinding('attr.aria-selected')
+  private _ariaSelected = this.$active();
 
   tabClicked = new EventEmitter<string>();
 
@@ -22,9 +36,11 @@ export class TabComponent {
 
   activate() {
     this.$active.set(true);
+    this._ariaSelected = true;
   }
 
   deactivate() {
     this.$active.set(false);
+    this._ariaSelected = false;
   }
 }

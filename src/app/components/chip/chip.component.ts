@@ -1,12 +1,19 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostBinding, inject, Input, OnInit } from '@angular/core';
-import { TypographyComponent } from '../typography/typography.component';
+import {
+  Component,
+  ElementRef,
+  HostBinding,
+  inject,
+  Input,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { ChipService } from './chip.service';
+import { spacingInPx } from '../../helpers';
 
 @Component({
   selector: 'app-chip',
   standalone: true,
-  imports: [CommonModule, TypographyComponent],
+  imports: [],
   templateUrl: './chip.component.html',
   styleUrl: './chip.component.scss',
   providers: [ChipService],
@@ -16,7 +23,17 @@ export class ChipComponent implements OnInit {
   variant: 'contained' | 'outlined' = 'contained';
 
   @Input()
+  spacing = 1.25;
+
+  private get spacingInPx() {
+    return spacingInPx(this.spacing);
+  }
+
+  @Input()
   orientation: 'vertical' | 'horizontal' = 'horizontal';
+
+  @Input()
+  size: 'base' | 'large' = 'base';
 
   @HostBinding('class')
   class = '';
@@ -29,6 +46,10 @@ export class ChipComponent implements OnInit {
 
   private _chipService = inject(ChipService);
 
+  private _elementRef = inject(ElementRef);
+
+  private _renderer = inject(Renderer2);
+
   constructor() {
     this.ariaDescribeby = this._chipService.chipDescriptionId;
     this.ariaLabelledby = this._chipService.chipLabelId;
@@ -36,6 +57,18 @@ export class ChipComponent implements OnInit {
 
   ngOnInit(): void {
     const baseClassName = 'app-chip';
-    this.class = `${baseClassName}-${this.variant} ${baseClassName}-${this.orientation}`;
+    let sizeClassName = `${baseClassName}-base`;
+
+    if (this.size !== 'base') {
+      sizeClassName = `${baseClassName}-${this.orientation}-${this.size}`;
+    }
+
+    this.class = `${baseClassName}-${this.variant} ${baseClassName}-${this.orientation} ${sizeClassName}`;
+
+    this._renderer.setStyle(
+      this._elementRef.nativeElement,
+      'gap',
+      `${this.spacingInPx}px`
+    );
   }
 }

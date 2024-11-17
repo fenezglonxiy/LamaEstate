@@ -1,0 +1,12 @@
+<svg width="0" height="0" class="hidden">
+  <symbol version="1.0" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" id="save">
+    <g transform="translate(0,100) scale(0.1,-0.1)" fill="currentColor" stroke="none">
+      <path d="M115 988 c-3 -7 -4 -231 -3 -497 2 -356 6 -485 15 -488 6 -2 90 73
+186 166 97 94 180 171 186 171 6 0 90 -77 186 -171 96 -94 181 -169 187 -167
+10 4 13 111 13 499 l0 494 -383 3 c-301 2 -384 0 -387 -10z m730 -40 c3 -7 4
+-206 3 -443 l-3 -430 -167 163 c-91 89 -172 162 -178 162 -7 0 -87 -73 -179
+-162 l-166 -162 -3 430 c-1 236 0 435 3 442 3 9 82 12 345 12 263 0 342 -3
+345 -12z"></path>
+    </g>
+  </symbol>
+</svg>

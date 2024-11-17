@@ -3,6 +3,7 @@ import {
   Component,
   ContentChild,
   effect,
+  HostBinding,
   inject,
   Injector,
   Input,
@@ -21,6 +22,11 @@ import { TabContentContainerComponent } from './tab-content-container/tab-conten
   styleUrl: './tabs.component.scss',
 })
 export class TabsComponent implements OnChanges, AfterContentInit {
+  @Input() tab = '';
+
+  @HostBinding('role')
+  private _role = 'tablist';
+
   private _prevTab = '';
   private _$tab = signal('');
   private _injector = inject(Injector);
@@ -30,8 +36,6 @@ export class TabsComponent implements OnChanges, AfterContentInit {
 
   @ContentChild(TabContentContainerComponent, { static: true })
   private _tabContentContainer!: TabContentContainerComponent;
-
-  @Input() tab = '';
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tab'].previousValue !== changes['tab'].currentValue) {

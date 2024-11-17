@@ -1,0 +1,11 @@
+export { CarouselCaptionComponent } from './carousel-caption/carousel-caption.component';
+export { CarouselCloseComponent } from './carousel-close/carousel-close.component';
+export { CarouselContentComponent } from './carousel-content/carousel-content.component';
+export { CarouselCounterComponent } from './carousel-counter/carousel-counter.component';
+export { CarouselImageComponent } from './carousel-image/carousel-image.component';
+export { CarouselIndicatorsComponent } from './carousel-indicators/carousel-indicators.component';
+export { CarouselItemComponent } from './carousel-item/carousel-item.component';
+export { CarouselPreviewComponent } from './carousel-preview/carousel-preview.component';
+export { CarouselPreviewImageComponent } from './carousel-preview-image/carousel-preview-image.component';
+export { CarouselPreviewItemComponent } from './carousel-preview-item/carousel-preview-item.component';
+export { CarouselComponent } from './carousel.component';

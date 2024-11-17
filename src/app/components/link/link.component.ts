@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ButtonComponent } from '../button';
 
@@ -11,7 +11,12 @@ import { ButtonComponent } from '../button';
   styleUrls: ['./link.component.scss', '../button/button.component.scss'],
 })
 export class LinkComponent extends ButtonComponent {
-  href = input.required<string | any[]>();
-  activeClassName = input<string | string[]>();
-  hoverAnimation = input<'scale' | 'none'>('none');
+  @Input({ required: true })
+  href: string | any[] = '';
+
+  @Input()
+  activeClassName: string | string[] = '';
+
+  @Input()
+  hoverAnimation: 'scale' | 'none' = 'none';
 }

@@ -1,0 +1,14 @@
+<app-chip orientation="vertical" size="large" [spacing]="5">
+  <app-chip-icon-content>
+    <app-svg-icon
+      svgSpriteHref="assets/user.svg#user"
+      title="estate owner image"
+      width="50"
+      height="50"
+    />
+  </app-chip-icon-content>
+
+  <app-chip-label-content>
+    <app-chip-label fontWeight="semibold">{{ ownerName }}</app-chip-label>
+  </app-chip-label-content>
+</app-chip>

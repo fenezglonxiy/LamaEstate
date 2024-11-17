@@ -1,0 +1,26 @@
+<div class="estate-preview-description-header">
+  <div class="flow-spacer-y">
+    <app-typography displayAs="h1" variant="4xl"
+      >Beautiful Apartment</app-typography
+    >
+
+    <app-estate-address>1234 Broadway St</app-estate-address>
+
+    <app-estate-price-tag [estatePrice]="1200" />
+  </div>
+
+  <div>
+    <app-estate-preview-description-owner-tag
+      [ownerName]="'John Doe'"
+      [ownerImageSrc]="'assets/user.png'"
+    />
+  </div>
+</div>
+
+<div class="estate-preview-description-body">
+  <app-typography
+    >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium at
+    optio veritatis illo, et quas, porro suscipit dolor quibusdam necessitatibus
+    ipsa nisi deleniti? Debitis dignissimos sed dolorum non quas illo!
+  </app-typography>
+</div>

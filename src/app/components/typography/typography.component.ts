@@ -1,10 +1,12 @@
 import {
   Component,
+  ElementRef,
   HostBinding,
   inject,
   Input,
   OnInit,
-  ViewContainerRef,
+  Renderer2,
+  RendererStyleFlags2,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -23,7 +25,20 @@ export class TypographyComponent implements OnInit {
   @HostBinding('for') @Input() for = '';
 
   @Input()
-  variant: 'body' | 'label' | 'h1' | 'h2' | 'h3' | 'h4' = 'body';
+  variant:
+    | 'xs'
+    | 'sm'
+    | 'base'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | '4xl'
+    | '5xl'
+    | '6xl'
+    | '7xl'
+    | '8xl'
+    | '9xl' = 'base';
 
   @Input()
   fontWeight:
@@ -35,15 +50,18 @@ export class TypographyComponent implements OnInit {
     | 'semibold'
     | 'bold'
     | 'extrabold'
-    | 'black' = 'normal';
+    | 'black'
+    | undefined;
 
   @Input()
   ellipsisLineClamp = 0;
 
   @HostBinding('style.display')
-  private _display = 'block';
+  private _styleDisplay = 'block';
 
-  private _vcr = inject(ViewContainerRef);
+  private _elementRef = inject(ElementRef);
+
+  private _renderer = inject(Renderer2);
 
   className = '';
 
@@ -52,20 +70,26 @@ export class TypographyComponent implements OnInit {
     const variantClassName = `${baseClassName}-${this.variant}`;
 
     if (this.displayAs === 'span' || this.displayAs === 'label') {
-      this._display = 'inline';
+      this._styleDisplay = 'inline';
     }
 
     let textOverflowClassName = '';
 
     if (this.ellipsisLineClamp > 0) {
       textOverflowClassName = `${baseClassName}-overflow-line`;
-      this._vcr.element.nativeElement.style.setProperty(
+      this._renderer.setStyle(
+        this._elementRef.nativeElement,
         '--line-clamp',
-        this.ellipsisLineClamp
+        `${this.ellipsisLineClamp}`,
+        RendererStyleFlags2.DashCase
       );
     }
 
-    const fontWeightClassName = `${baseClassName}-${this.fontWeight}`;
+    let fontWeightClassName = '';
+
+    if (this.fontWeight) {
+      fontWeightClassName = `${baseClassName}-${this.fontWeight}`;
+    }
 
     this.className = `${variantClassName} ${textOverflowClassName} ${fontWeightClassName}`;
   }

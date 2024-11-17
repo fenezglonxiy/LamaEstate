@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, signal } from '@angular/core';
+import { Component, HostBinding, Input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-tab-content',
@@ -11,6 +11,9 @@ import { Component, Input, signal } from '@angular/core';
 export class TabContentComponent {
   @Input({ required: true })
   id: string = '';
+
+  @HostBinding('role')
+  private _role = 'tabpanel';
 
   $active = signal(false);
 

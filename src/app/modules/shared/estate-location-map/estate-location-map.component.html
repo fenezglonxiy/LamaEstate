@@ -1,0 +1,13 @@
+<app-map [options]="map.options">
+  @for (marker of markers; let i = $index; track marker.id) {
+  <app-map-marker
+    [latitude]="marker.latitude"
+    [longitude]="marker.longitude"
+    [options]="marker.options"
+  >
+    @if (!popupsDisabled) {
+    <app-map-popup [options]="popups[i].options" />
+    }
+  </app-map-marker>
+  }
+</app-map>

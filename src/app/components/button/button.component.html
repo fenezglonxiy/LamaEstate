@@ -1,3 +1,8 @@
-<button [className]="className" [type]="type">
+<button
+  [className]="className"
+  [type]="type"
+  [style.gap]="gapStyle"
+  [disabled]="disabled"
+>
   <ng-content />
 </button>

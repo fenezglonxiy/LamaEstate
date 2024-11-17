@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+
+  .line-break {
+    flex-basis: 100%;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    z-index: -1;
+  }
+}

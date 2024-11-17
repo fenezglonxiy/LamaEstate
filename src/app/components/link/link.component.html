@@ -2,10 +2,10 @@
   [ngClass]="[
     className,
     'app-link',
-    { scale: 'app-link-hover-scale', none: '' }[hoverAnimation()]
+    { scale: 'app-link-hover-scale', none: '' }[hoverAnimation]
   ]"
-  [routerLink]="[href()]"
-  [routerLinkActive]="activeClassName() ?? ''"
+  [routerLink]="[href]"
+  [routerLinkActive]="activeClassName"
 >
   <ng-content />
 </a>
