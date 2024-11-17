@@ -1,6 +1,6 @@
 export const estateData = [
   {
-    id: 1,
+    id: '1',
     name: 'A Great Apartment Next to the Beach!',
     thumbnailSrc:
       'https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -12,7 +12,7 @@ export const estateData = [
     longitude: -0.1278,
   },
   {
-    id: 2,
+    id: '2',
     name: 'An Awesome Apartment Near the Park! Almost too good to be true!',
     thumbnailSrc:
       'https://images.pexels.com/photos/1428348/pexels-photo-1428348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -24,7 +24,7 @@ export const estateData = [
     longitude: -1.8904,
   },
   {
-    id: 3,
+    id: '3',
     name: 'A New Apartment in the City!',
     thumbnailSrc:
       'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -36,7 +36,7 @@ export const estateData = [
     longitude: -2.2426,
   },
   {
-    id: 4,
+    id: '4',
     name: 'Great Location! Great Price! Great Apartment!',
     thumbnailSrc:
       'https://images.pexels.com/photos/2467285/pexels-photo-2467285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -48,7 +48,7 @@ export const estateData = [
     longitude: -1.5491,
   },
   {
-    id: 5,
+    id: '5',
     name: 'Apartment 5',
     thumbnailSrc:
       'https://images.pexels.com/photos/276625/pexels-photo-276625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -60,7 +60,7 @@ export const estateData = [
     longitude: -2.9916,
   },
   {
-    id: 6,
+    id: '6',
     name: 'Apartment 6',
     thumbnailSrc:
       'https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -72,7 +72,7 @@ export const estateData = [
     longitude: -1.6174,
   },
   {
-    id: 7,
+    id: '7',
     name: 'Apartment 7',
     thumbnailSrc:
       'https://images.pexels.com/photos/2029667/pexels-photo-2029667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -84,7 +84,7 @@ export const estateData = [
     longitude: -1.4701,
   },
   {
-    id: 8,
+    id: '8',
     name: 'Apartment 8',
     thumbnailSrc:
       'https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
